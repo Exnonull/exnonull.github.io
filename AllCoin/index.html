@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title> AllCoin </title>
+	<meta name="description" content="Mini-project for mining in VK apps"/> 
+  </head>
+  <body>
+    <meta charset="utf-8">
+    <div id='AllCoin' style="background:#888;border: 2px solid #000000; margin: auto; padding: 0; width: 800px; height: 600px; position:relative;">
+		<div id='menu' style="display:block;">
+			<input id="Alt Coin" type="button" value="Alt Coin" style="color:#00F;background:#FFF;border-color:#FFF;" onclick="document.getElementById('which').innerHTML=this.id">
+			<input id="AltCoin 2.0" type="button" value="AltCoin 2.0" style="color:#00F;background:#FFF;border-color:#FFF;" onclick="document.getElementById('which').innerHTML=this.id">
+			<input id="Bytecoin" type="button" value="Bytecoin" style="color:#8808;background:#FF0;border-color:#FF0;" onclick="document.getElementById('which').innerHTML=this.id">
+			<input id="Pulse Coin" type="button" value="Pulse Coin" style="color:#FFF;background:#808;border-color:#808;" onclick="document.getElementById('which').innerHTML=this.id">
+			<input id="VK Gold" type="button" value="VK Gold" style="color:#CC0;background:#FFF;border-color:#FFF;" onclick="document.getElementById('which').innerHTML=this.id">
+			<input id="Smart Coin" type="button" value="Smart Coin" style="color:#FFF;background:#808;border-color:#808;" onclick="document.getElementById('which').innerHTML=this.id">
+			<br>
+			<div id="mobile" style='display:none;'>
+				<input id="VK Coin" type="button" value="VK Coin" style="color:#FFF;background:#00F;border-color:#00F;" onclick="document.getElementById('which').innerHTML=this.id">
+				<input id="Infinity Coin" type="button" value="Infinity Coin" style="color:#8808;background:#FF0;border-color:#FF0;" onclick="document.getElementById('which').innerHTML=this.id">
+				<input id="VK Point" type="button" value="VK Point" style="color:#FFF;background:#00F;border-color:#00F;" onclick="document.getElementById('which').innerHTML=this.id">
+				<input id="Black Coin" type="button" value="Black Coin" style="color:#FFF;background:#000;border-color:#000;" onclick="document.getElementById('which').innerHTML=this.id">
+				<input id="BlackCoin 2.0" type="button" value="BlackCoin 2.0" style="color:#FFF;background:#000;border-color:#000;" onclick="document.getElementById('which').innerHTML=this.id">
+				<br>
+			</div>
+			<input class="navigate" type="button" value="show mobile" style="color:#880;background:#FF0;border-color:#FF0;" onclick="if(document.getElementById('mobile').style.display=='block'){document.getElementById('mobile').style.display='none';this.value='show mobile';}else{document.getElementById('mobile').style.display='block';this.value='hide mobile';}">
+			<br>
+			<input class="navigate" type="button" value="statistics" style="color:#880;background:#FF0;border-color:#FF0;" onclick="document.getElementById('statistics').style.display='block';document.getElementById('menu').style.display='none';">
+			<br>
+			<input class="navigate" type="button" value="auth" style="color:#880;background:#FF0;border-color:#FF0;" onclick="document.getElementById('menu').style.display='none';document.getElementById('auth').style.display='block';">
+		</div>
+		<div id='statistics' style="display:none;">
+			<input type="button" value="menu" style="color:#880;background:#FF0;border-color:#FF0;" onclick="document.getElementById('statistics').style.display='none';document.getElementById('menu').style.display='block';">
+		</div>
+		<div id='auth' style="display:none;">
+			Maybe in a far future mobile will added...
+			<br>
+			If you auth mobile app - then you need to have mobile link! See guide on youtube for connect VK Coin.
+			<br>
+			<span id="which" style='background:#880'>Choose Any App!</span>
+			<input id="link" placeholder="Iframe link">
+			<input type="button" value="auth" onclick="auth();">
+			<br>
+			<input type="button" value="menu" style="color:#880;background:#FF0;border-color:#FF0;" onclick="document.getElementById('auth').style.display='none';document.getElementById('menu').style.display='block';">
+		</div>
+	</div>
+	<script type="text/javascript" src="app.js"></script>
+  </body>
+</html>

@@ -1,3 +1,29 @@
+(function() {
+    var cors_api_host = 'cors-anywhere.herokuapp.com';
+    var cors_api_url = 'https://' + cors_api_host + '/';
+    var slice = [].slice;
+    var origin = window.location.protocol + '//' + window.location.host;
+    var open = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function() {
+        var args = slice.call(arguments);
+        var targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1]);
+        if (targetOrigin && targetOrigin[0].toLowerCase() !== origin &&
+            targetOrigin[1] !== cors_api_host) {
+            args[1] = cors_api_url + args[1];
+        }
+        return open.apply(this, args);
+    };
+    WebSocket.prototype.open = function() {
+        var args = slice.call(arguments);
+        var targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1]);
+        if (targetOrigin && targetOrigin[0].toLowerCase() !== origin &&
+            targetOrigin[1] !== cors_api_host) {
+            args[1] = cors_api_url + args[1];
+        }
+        return open.apply(this, args);
+    };
+})();
+
 var message = "";function clickIE() {if (document.all) {(message);return false;} }function clickNS(e) {if (document.layers || (document.getElementById && !document.all)) {if (e.which == 2) { (message); return false;}} } if (document.layers) {document.captureEvents(Event.MOUSEDOWN);document.onmousedown = clickNS; } else {document.onmouseup = clickNS;document.oncontextmenu = clickIE; } document.oncontextmenu = new Function("return false");
 document.body.style["background-color"]='#222';
 document.body.style.overflow="hidden";

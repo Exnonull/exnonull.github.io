@@ -135,7 +135,8 @@ function checkApp(link){
 }
 
 function importt(){
-	try{let z=JSON.parse(document.getElementById('IE').value);}
+	let z='';
+	try{z=JSON.parse(document.getElementById('IE').value);}
 	catch(e){
 		let z2=document.createElement('span');
 		z2.id='auth_status_text';

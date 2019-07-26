@@ -1,29 +1,3 @@
-(function() {
-    var cors_api_host = 'cors-anywhere.herokuapp.com';
-    var cors_api_url = 'https://' + cors_api_host + '/';
-    var slice = [].slice;
-    var origin = window.location.protocol + '//' + window.location.host;
-    var open = XMLHttpRequest.prototype.open;
-    XMLHttpRequest.prototype.open = function() {
-        var args = slice.call(arguments);
-        var targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1]);
-        if (targetOrigin && targetOrigin[0].toLowerCase() !== origin &&
-            targetOrigin[1] !== cors_api_host) {
-            args[1] = cors_api_url + args[1];
-        }
-        return open.apply(this, args);
-    };
-    WebSocket.prototype.open = function() {
-        var args = slice.call(arguments);
-        var targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1]);
-        if (targetOrigin && targetOrigin[0].toLowerCase() !== origin &&
-            targetOrigin[1] !== cors_api_host) {
-            args[1] = cors_api_url + args[1];
-        }
-        return open.apply(this, args);
-    };
-})();
-
 var message = "";function clickIE() {if (document.all) {(message);return false;} }function clickNS(e) {if (document.layers || (document.getElementById && !document.all)) {if (e.which == 2) { (message); return false;}} } if (document.layers) {document.captureEvents(Event.MOUSEDOWN);document.onmousedown = clickNS; } else {document.onmouseup = clickNS;document.oncontextmenu = clickIE; } document.oncontextmenu = new Function("return false");
 document.body.style["background-color"]='#222';
 document.body.style.overflow="hidden";
@@ -74,13 +48,16 @@ AltCoin 2.0:https://vk.com/app7036819
 Don't work:
 VK Money:https://vk.com/app6972852
 ViceCoinApp:https://vk.com/app6981596
+Lucky Coin:https://vk.com/app7000140
 
 Mobile:
 VK Coin:https://vk.com/app6915965
-Infinity Coin:https://vk.com/app6954459
 VK Point:https://vk.com/app6748650
 Black Coin:https://vk.com/app6986919
 BlackCoin 2.0:https://vk.com/app7046092
+
+Don't work:
+Infinity Coin:https://vk.com/app6954459
 */
 function startSession(app,info,link){
 	let lol=new XMLHttpRequest();
@@ -204,10 +181,17 @@ function startSession(app,info,link){
 	}
 }
 
+function openIframe(link){
+	let z=document.createElement('iframe');
+	z.src=link;
+	z.style.display='none';
+	document.body.appendChild(z);
+}
+
 var ints=[];
 
 function auth(){
-	z=document.getElementById('link').value;
+	let z=document.getElementById('link').value;
 	let link=z;
 	let app=document.getElementById('which').innerHTML;
 	z=z.split('&');
@@ -216,5 +200,6 @@ function auth(){
 	z='{"'+z+'"}';
 	z=z.replace(/=/g,'":"');
 	miners[app].push(JSON.parse(z));
-	startSession(app,miners[app][miners[app].length-1],link);
+	openIframe(link);
+	//startSession(app,miners[app][miners[app].length-1],link);
 }

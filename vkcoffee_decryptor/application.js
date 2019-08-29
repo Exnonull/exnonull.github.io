@@ -574,7 +574,7 @@ function init_BF(msg){
 		TTD(msg);
 	}
 }
-document.getElementById('act').onclick=function(){
+document.getElementById('actDec').onclick=function(){
 	let key=document.getElementById('key').value;
 	document.getElementById('resDec').value='';
 	
@@ -593,9 +593,16 @@ document.getElementById('act').onclick=function(){
 		document.getElementById('resDec').value='<Ошибка в шифре>';
 		WorkerTimer.setTimeout(function(){document.getElementById('resDec').style.color='';},2e3);
 	}
+};
+document.getElementById('actEnc').onclick=function(){
+	let key=document.getElementById('key').value;
+	
+	document.getElementById('resEnc').style.color='#0F0';
 	
 	else{document.getElementById('resDec').value=dec(document.getElementById('dec').value,key);}
 	document.getElementById('resEnc').value=enc(document.getElementById('enc').value,key);
+	
+	WorkerTimer.setTimeout(function(){document.getElementById('resEnc').style.color='';},2e3);
 };
 var gi=0;
 var keyss=[];

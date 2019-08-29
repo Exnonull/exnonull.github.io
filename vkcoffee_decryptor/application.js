@@ -1,3 +1,5 @@
+!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{("undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this).WorkerTimer=e()}}(function(){return function o(i,s,l){function u(r,e){if(!s[r]){if(!i[r]){var t="function"==typeof require&&require;if(!e&&t)return t(r,!0);if(f)return f(r,!0);var n=new Error("Cannot find module '"+r+"'");throw n.code="MODULE_NOT_FOUND",n}var a=s[r]={exports:{}};i[r][0].call(a.exports,function(e){var t=i[r][1][e];return u(t||e)},a,a.exports,o,i,s,l)}return s[r].exports}for(var f="function"==typeof require&&require,e=0;e<l.length;e++)u(l[e]);return u}({1:[function(e,r,t){(function(e){"use strict";var t,n,a,o;e===e.window&&e.URL&&e.Blob&&e.Worker?r.exports=(t=["var timerIds = {}, _ = {};","_.setInterval = function(args) {","  timerIds[args.timerId] = setInterval(function() { postMessage(args.timerId); }, args.delay);","};","_.clearInterval = function(args) {","  clearInterval(timerIds[args.timerId]);","};","_.setTimeout = function(args) {","  timerIds[args.timerId] = setTimeout(function() { postMessage(args.timerId); }, args.delay);","};","_.clearTimeout = function(args) {","  clearTimeout(timerIds[args.timerId]);","};","onmessage = function(e) { _[e.data.type](e.data) };"].join(""),n=0,a={},(o=new e.Worker(e.URL.createObjectURL(new e.Blob([t],{type:"text/javascript"})))).onmessage=function(e){a[e.data]&&a[e.data].callback.apply(null,a[e.data].params)},{setInterval:function(e,t){var r=Array.prototype.slice.call(arguments,2);return n+=1,o.postMessage({type:"setInterval",timerId:n,delay:t}),a[n]={callback:e,params:r},n},setTimeout:function(e,t){var r=Array.prototype.slice.call(arguments,2);return n+=1,o.postMessage({type:"setTimeout",timerId:n,delay:t}),a[n]={callback:e,params:r},n},clearInterval:function(e){o.postMessage({type:"clearInterval",timerId:e}),a[e]=null},clearTimeout:function(e){o.postMessage({type:"clearTimeout",timerId:e}),a[e]=null}}):r.exports=e}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{}]},{},[1])(1)});
+//worker-timer
 var data2 = {};
 var CryptoJS = CryptoJS || function(u, p) {
   var d = {},
@@ -447,7 +449,7 @@ data2.COFFEE = {
       keySize: 128 / 32
     }).toString().hexEncode().toUpperCase() + vkcoffee.trim();
   }
-};
+};//vkcoffee decryptor
 var dec=function(msg,key){
 	if(typeof(key)!=typeof(''))key='';
 	let msg2=data2.COFFEE.decrypt(msg,key);
@@ -459,9 +461,146 @@ var enc=function(msg,key){
     if(typeof(key)!=typeof('')){return data2.COFFEE.encrypt(msg,'');}
     return data2.COFFEE.encrypt(msg,key);
 };
+var canBF=false,BFin=false;
+function TTD(msg){
+    let msg2=dec(msg);
+    if(msg2!=null)return msg2;
+	if(!BFin)init_BF(msg);
+	if(BFin){canBF=true;for(let i=0;i<30;i++)BF(msg);}
+}
+document.getElementById('key').onmouseover=function(){document.getElementById('key').style.color='';}
+function BF(msg){
+    if(canBF){
+        let k=gi;
+        gi++;
+		document.getElementById('key').value=keyss[k];
+    	if(gi<keyss.length){
+    		let msg2=dec(msg,keyss[k]);
+    		if(!msg2!=null){
+				gi=0;
+				document.getElementById('key').style.color='#0F0';
+				document.getElementById('key').value=keyss[k];
+				document.getElementById('resDec').value=msg2;
+				canBF=false;
+				return;
+			}
+    	}else{
+    		gi=0;
+			document.getElementById('key').style.color='#F00';
+			document.getElementById('key').value='Ключ не найден';
+    		canBF=false;
+    		return;
+    	}
+    	WorkerTimer.setTimeout(function(){BF(msg);},0);
+    }
+}
+var stageBF=1;
+function init_BF(msg){
+	let was=true;
+    switch(stageBF){
+        case 1:
+			document.getElementById('key').style.color='#0F0';
+			document.getElementById('key').value='Инициализация 1/2';
+            for(let i=0;i<=1e4;i++){
+        		if(!(key.indexOf(i+'')+1))key.push(i+'');
+            }
+        break;
+        case 2:
+			document.getElementById('key').style.color='#0F0';
+			document.getElementById('key').value='Инициализация 2/2';
+            for(let i='0'.charCodeAt(0);i<='9'.charCodeAt(0);i++){
+        		let key2=String.fromCharCode(i);
+        		if(!(key.indexOf(key2)+1))key.push(key2);
+        		for(let i2='0'.charCodeAt(0);i2<='9'.charCodeAt(0);i2++){
+        			let key2=String.fromCharCode(i)+String.fromCharCode(i2);
+        			if(!(key.indexOf(key2)+1))key.push(key2);
+        			for(let i3='0'.charCodeAt(0);i3<='9'.charCodeAt(0);i3++){
+        				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
+        				if(!(key.indexOf(key2)+1))key.push(key2);
+        			}
+        			for(let i3='a'.charCodeAt(0);i3<='z'.charCodeAt(0);i3++){
+        				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
+        				if(!(key.indexOf(key2)+1))key.push(key2);
+        			}
+        			for(let i3='A'.charCodeAt(0);i3<='Z'.charCodeAt(0);i3++){
+        				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
+        				if(!(key.indexOf(key2)+1))key.push(key2);
+        			}
+        		}
+        		
+        		for(let i2='a'.charCodeAt(0);i2<='z'.charCodeAt(0);i2++){
+        			let key2=String.fromCharCode(i)+String.fromCharCode(i2);
+        			if(!(key.indexOf(key2)+1))key.push(key2);
+        			for(let i3='0'.charCodeAt(0);i3<='9'.charCodeAt(0);i3++){
+        				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
+        				if(!(key.indexOf(key2)+1))key.push(key2);
+        			}
+        			for(let i3='a'.charCodeAt(0);i3<='z'.charCodeAt(0);i3++){
+        				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
+        				if(!(key.indexOf(key2)+1))key.push(key2);
+        			}
+        			for(let i3='A'.charCodeAt(0);i3<='Z'.charCodeAt(0);i3++){
+        				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
+        				if(!(key.indexOf(key2)+1))key.push(key2);
+        			}
+        		}
+        		
+        		for(let i2='A'.charCodeAt(0);i2<='Z'.charCodeAt(0);i2++){
+        			let key2=String.fromCharCode(i)+String.fromCharCode(i2);
+        			if(!(key.indexOf(key2)+1))key.push(key2);
+        			for(let i3='0'.charCodeAt(0);i3<='9'.charCodeAt(0);i3++){
+        				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
+        				if(!(key.indexOf(key2)+1))key.push(key2);
+        			}
+        			for(let i3='a'.charCodeAt(0);i3<='z'.charCodeAt(0);i3++){
+        				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
+        				if(!(key.indexOf(key2)+1))key.push(key2);
+        			}
+        			for(let i3='A'.charCodeAt(0);i3<='Z'.charCodeAt(0);i3++){
+        				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
+        				if(!(key.indexOf(key2)+1))key.push(key2);
+        			}
+        		}
+            }
+        break;
+		default:
+			was=false;
+		break;
+	}
+	if(was){
+		WorkerTimer.setTimeout(function(){init_BF(msg);},0);
+	}else{
+		BFin=true;
+		TTD(msg);
+	}
+}
 document.getElementById('act').onclick=function(){
-	let tempDec=dec(document.getElementById('dec').value,key);
-	if(tempDec===null){document.getElementById('resDec').value="<<<ERROR>>>";}
+	let key=document.getElementById('key').value;
+	document.getElementById('resDec').value='';
+	
+	let msg=document.getElementById('dec').value.toUpperCase().match(/^.{0,}(AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II) ([A-F0-9\s]+) (AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II).{0,}$/);
+	let tempDec=123;
+	if(msg!=null){
+		document.getElementById('dec').value=msg[1]+msg[2]+msg[3];
+		tempDec=dec(msg[1]+msg[2]+msg[3],key);
+	}
+	if(tempDec===null){
+		document.getElementById('resDec').style.color='#F00';
+		document.getElementById('resDec').value="<Нужен ключ>";
+		WorkerTimer.setTimeout(function(){document.getElementById('resDec').style.color='';},2e3);
+	}else if(tempDec==123){
+		document.getElementById('resDec').style.color='#F00';
+		document.getElementById('resDec').value='<Ошибка в шифре>';
+		WorkerTimer.setTimeout(function(){document.getElementById('resDec').style.color='';},2e3);
+	}
+	
 	else{document.getElementById('resDec').value=dec(document.getElementById('dec').value,key);}
 	document.getElementById('resEnc').value=enc(document.getElementById('enc').value,key);
+};
+var gi=0;
+var keyss=[];
+document.getElementById('act2').onclick=function(){
+	document.getElementById('resDec').value='';
+	let msg=document.getElementById('dec').value.toUpperCase().match(/^.{0,}(AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II) ([A-F0-9\s]+) (AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II).{0,}$/);
+	if(msg!=null)TTD(msg[1]+msg[2]+msg[3]);
 }

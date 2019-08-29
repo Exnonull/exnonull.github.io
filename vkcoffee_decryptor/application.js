@@ -469,6 +469,8 @@ function TTD(msg){
 	if(BFin){canBF=true;for(let i=0;i<30;i++)BF(msg);}
 }
 document.getElementById('key').onmouseover=function(){document.getElementById('key').style.color='';}
+document.getElementById('resDec').onmouseover=function(){document.getElementById('resDec').style.color='';}
+document.getElementById('resEnc').onmouseover=function(){document.getElementById('resEnc').style.color='';}
 function BF(msg){
     if(canBF){
         let k=gi;

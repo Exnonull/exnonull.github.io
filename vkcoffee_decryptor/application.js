@@ -618,6 +618,19 @@ document.getElementById('act2').onclick=function(){
 
 function getWords1(){
     let t1=[
+		"omegakek",
+		"kjk",
+		"lel",
+		"pidr",
+		"лел",
+		"сук",
+		"cerf",
+		"lie",
+		"vkcoffee",
+		"VK CO FF EE",
+		"VK C0 FF EE",
+		"VKCOFFEE",
+		"кофе",
         "monkey",
         "12345",
         "123",

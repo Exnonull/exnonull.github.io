@@ -461,7 +461,7 @@ var enc=function(msg,key){
 };
 document.getElementById('act').onclick=function(){
 	let tempDec=dec(document.getElementById('dec').value,key);
-	if(tempDec===null){document.getElementById('resDec').value="Ошибка: шифр/ключ/пробел";}
+	if(tempDec===null){document.getElementById('resDec').value="<<<ERROR>>>";}
 	else{document.getElementById('resDec').value=dec(document.getElementById('dec').value,key);}
 	document.getElementById('resEnc').value=enc(document.getElementById('enc').value,key);
 }

@@ -583,7 +583,7 @@ document.getElementById('actDec').onclick=function(){
 	let msg=document.getElementById('dec').value.toUpperCase().match(/^.{0,}(AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II) ([A-F0-9\s]+) (AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II).{0,}$/);
 	let tempDec=123;
 	if(msg!=null){
-		document.getElementById('dec').value=msg[1]+msg[2]+msg[3];
+		document.getElementById('dec').value=msg[1]+' '+msg[2]+' '+msg[3];
 		tempDec=dec(msg[1]+' '+msg[2]+' '+msg[3],key);
 	}
 	if(tempDec===null){
@@ -597,7 +597,7 @@ document.getElementById('actDec').onclick=function(){
 	}else{
 		document.getElementById('resDec').style.color='#0F0';
 		document.getElementById('resDec').value=tempDec;
-		WorkerTimer.setTimeout(function(){document.getElementById('resDec').style.color='';},2e3);
+		WorkerTimer.setTimeout(function(){document.getElementById('resDec').style.color='';},5e2);
 	}
 };
 document.getElementById('actEnc').onclick=function(){

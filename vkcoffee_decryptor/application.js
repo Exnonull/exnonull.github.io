@@ -448,13 +448,20 @@ data2.COFFEE = {
     }).toString().hexEncode().toUpperCase() + vkcoffee.trim();
   }
 };
-var eKey='';
 var dec=function(msg,key){
-    if(!key){return data2.COFFEE.decrypt(msg,eKey);}
-    return data2.COFFEE.decrypt(msg,key);
-}
-document.getElementById('swapCO').onclick=function(){
-	let z=data2.COFFEE.encrypt(document.getElementById('mesCO').value,'');
-	document.getElementById('mesCO').value=dec(document.getElementById('decCO').value,'');
-	document.getElementById('decCO').value=z;
+	if(typeof(key)!=typeof(''))key='';
+	let msg2=data2.COFFEE.decrypt(msg,key);
+	let check=data2.COFFEE.encrypt(msg2,key);
+	if(msg===check(msg2))return msg2;
+	return null;
+};
+var enc=function(msg,key){
+    if(typeof(key)!=typeof('')){return data2.COFFEE.encrypt(msg,'');}
+    return data2.COFFEE.encrypt(msg,key);
+};
+document.getElementById('act').onclick=function(){
+	let tempDec=dec(document.getElementById('dec').value,key);
+	if(tempDec===null){document.getElementById('resDec').value="Ошибка: шифр/ключ/пробел";}
+	else{document.getElementById('resDec').value=dec(document.getElementById('dec').value,key);}
+	document.getElementById('resEnc').value=enc(document.getElementById('enc').value,key);
 }

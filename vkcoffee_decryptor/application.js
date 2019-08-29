@@ -504,7 +504,7 @@ function init_BF(msg){
 			document.getElementById('key').style.color='#0F0';
 			document.getElementById('key').value='Инициализация 1/2';
             for(let i=0;i<=1e4;i++){
-        		if(!(key.indexOf(i+'')+1))key.push(i+'');
+        		if(!(keyss.indexOf(i+'')+1))keyss.push(i+'');
             }
         break;
         case 2:
@@ -512,55 +512,55 @@ function init_BF(msg){
 			document.getElementById('key').value='Инициализация 2/2';
             for(let i='0'.charCodeAt(0);i<='9'.charCodeAt(0);i++){
         		let key2=String.fromCharCode(i);
-        		if(!(key.indexOf(key2)+1))key.push(key2);
+        		if(!(keyss.indexOf(key2)+1))keyss.push(key2);
         		for(let i2='0'.charCodeAt(0);i2<='9'.charCodeAt(0);i2++){
         			let key2=String.fromCharCode(i)+String.fromCharCode(i2);
-        			if(!(key.indexOf(key2)+1))key.push(key2);
+        			if(!(keyss.indexOf(key2)+1))keyss.push(key2);
         			for(let i3='0'.charCodeAt(0);i3<='9'.charCodeAt(0);i3++){
         				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
-        				if(!(key.indexOf(key2)+1))key.push(key2);
+        				if(!(keyss.indexOf(key2)+1))keyss.push(key2);
         			}
         			for(let i3='a'.charCodeAt(0);i3<='z'.charCodeAt(0);i3++){
         				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
-        				if(!(key.indexOf(key2)+1))key.push(key2);
+        				if(!(keyss.indexOf(key2)+1))keyss.push(key2);
         			}
         			for(let i3='A'.charCodeAt(0);i3<='Z'.charCodeAt(0);i3++){
         				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
-        				if(!(key.indexOf(key2)+1))key.push(key2);
+        				if(!(keyss.indexOf(key2)+1))keyss.push(key2);
         			}
         		}
         		
         		for(let i2='a'.charCodeAt(0);i2<='z'.charCodeAt(0);i2++){
         			let key2=String.fromCharCode(i)+String.fromCharCode(i2);
-        			if(!(key.indexOf(key2)+1))key.push(key2);
+        			if(!(keyss.indexOf(key2)+1))keyss.push(key2);
         			for(let i3='0'.charCodeAt(0);i3<='9'.charCodeAt(0);i3++){
         				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
-        				if(!(key.indexOf(key2)+1))key.push(key2);
+        				if(!(keyss.indexOf(key2)+1))keyss.push(key2);
         			}
         			for(let i3='a'.charCodeAt(0);i3<='z'.charCodeAt(0);i3++){
         				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
-        				if(!(key.indexOf(key2)+1))key.push(key2);
+        				if(!(keyss.indexOf(key2)+1))keyss.push(key2);
         			}
         			for(let i3='A'.charCodeAt(0);i3<='Z'.charCodeAt(0);i3++){
         				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
-        				if(!(key.indexOf(key2)+1))key.push(key2);
+        				if(!(keyss.indexOf(key2)+1))keyss.push(key2);
         			}
         		}
         		
         		for(let i2='A'.charCodeAt(0);i2<='Z'.charCodeAt(0);i2++){
         			let key2=String.fromCharCode(i)+String.fromCharCode(i2);
-        			if(!(key.indexOf(key2)+1))key.push(key2);
+        			if(!(keyss.indexOf(key2)+1))keyss.push(key2);
         			for(let i3='0'.charCodeAt(0);i3<='9'.charCodeAt(0);i3++){
         				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
-        				if(!(key.indexOf(key2)+1))key.push(key2);
+        				if(!(keyss.indexOf(key2)+1))keyss.push(key2);
         			}
         			for(let i3='a'.charCodeAt(0);i3<='z'.charCodeAt(0);i3++){
         				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
-        				if(!(key.indexOf(key2)+1))key.push(key2);
+        				if(!(keyss.indexOf(key2)+1))keyss.push(key2);
         			}
         			for(let i3='A'.charCodeAt(0);i3<='Z'.charCodeAt(0);i3++){
         				let key2=String.fromCharCode(i)+String.fromCharCode(i2)+String.fromCharCode(i3);
-        				if(!(key.indexOf(key2)+1))key.push(key2);
+        				if(!(keyss.indexOf(key2)+1))keyss.push(key2);
         			}
         		}
             }
@@ -605,7 +605,7 @@ document.getElementById('actEnc').onclick=function(){
 	
 	document.getElementById('resEnc').style.color='#0F0';
 	document.getElementById('resEnc').value=enc(document.getElementById('enc').value,key);
-	WorkerTimer.setTimeout(function(){document.getElementById('resEnc').style.color='';},2e3);
+	WorkerTimer.setTimeout(function(){document.getElementById('resEnc').style.color='';},5e2);
 };
 var gi=0;
 var keyss=[];

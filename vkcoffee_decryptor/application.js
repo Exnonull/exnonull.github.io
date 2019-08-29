@@ -2817,7 +2817,7 @@ function getWords1(){
         "пароль123"
     ];
     t1.forEach(function(a1){
-        if(!(key.indexOf(a1)+1))key.push(a1);
+        if(!(keyss.indexOf(a1)+1))keyss.push(a1);
     });
 }
 getWords1();

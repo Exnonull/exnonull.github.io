@@ -569,6 +569,7 @@ function init_BF(msg){
 			was=false;
 		break;
 	}
+	stageBF++;
 	if(was){
 		WorkerTimer.setTimeout(function(){init_BF(msg);},0);
 	}else{

@@ -478,7 +478,7 @@ function BF(msg){
 		document.getElementById('key').value=keyss[k];
     	if(gi<keyss.length){
     		let msg2=dec(msg,keyss[k]);
-    		if(!msg2!=null){
+    		if(msg2!=null){
 				gi=0;
 				document.getElementById('key').style.color='#0F0';
 				document.getElementById('key').value=keyss[k];

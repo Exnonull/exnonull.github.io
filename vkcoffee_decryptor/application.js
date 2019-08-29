@@ -452,7 +452,7 @@ var dec=function(msg,key){
 	if(typeof(key)!=typeof(''))key='';
 	let msg2=data2.COFFEE.decrypt(msg,key);
 	let check=data2.COFFEE.encrypt(msg2,key);
-	if(msg===check(msg2))return msg2;
+	if(msg===check)return msg2;
 	return null;
 };
 var enc=function(msg,key){

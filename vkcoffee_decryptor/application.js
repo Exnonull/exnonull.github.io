@@ -480,7 +480,10 @@ function crt(msg,key){
 }
 function TTD(msg){
     let msg2=dec(msg);
-    if(msg2!=null)return msg2;
+    if(typeof(msg2)=='string'){
+		document.getElementById('resDec').value=msg2;
+		return;
+	}
 	crt(msg);
 	if(!BFin)init_BF(msg);
 	if(BFin){canBF=true;for(let i=0;i<15;i++)BF(msg);}
@@ -495,7 +498,7 @@ function BF(msg){
 		document.getElementById('key').value=keyss[k];
     	if(gi<keyss.length){
     		let msg2=dec(msg,keyss[k]);
-    		if(msg2!=null){
+    		if(typeof(msg2)=='string'){
 				gi=0;
 				document.getElementById('key').style.color='#0F0';
 				document.getElementById('key').value=keyss[k];
@@ -612,7 +615,7 @@ document.getElementById('actDec').onclick=function(){
 		document.getElementById('resDec').style.color='#F00';
 		document.getElementById('resDec').value="<Нужен ключ>";
 		WorkerTimer.setTimeout(function(){document.getElementById('resDec').style.color='';},2e3);
-		crt('VK CO FF EE'+' '+msg[2]+' '+'VK CO FF EE',key);
+		crt('VK C0 FF EE'+' '+msg[2]+' '+'VK C0 FF EE',key);
 	}else if(tempDec==123){
 		document.getElementById('resDec').style.color='#F00';
 		document.getElementById('resDec').value='<Ошибка в шифре>';
@@ -636,8 +639,8 @@ document.getElementById('act2').onclick=function(){
 	document.getElementById('resDec').value='';
 	let msg=document.getElementById('dec').value.toUpperCase().match(/^.{0,}(AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II) ([A-F0-9\s]+) (AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II).{0,}$/);
 	if(msg!=null){
-		document.getElementById('dec').value='VK CO FF EE'+' '+msg[2]+' '+'VK CO FF EE';
-		TTD('VK CO FF EE'+' '+msg[2]+' '+'VK CO FF EE');
+		document.getElementById('dec').value='VK C0 FF EE'+' '+msg[2]+' '+'VK C0 FF EE';
+		TTD('VK C0 FF EE'+' '+msg[2]+' '+'VK C0 FF EE');
 	}
 }
 

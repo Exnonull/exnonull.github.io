@@ -596,7 +596,7 @@ function init_BF(msg){
 	}
 }
 function clearr(){
-	document.getElementById('possibles').innerHTML='<input type="button" value="очистить" onclick="clearr();"><br><span>Возможные варианты расшифровки:</span>';
+	document.getElementById('possibles').innerHTML='<input type="button" value="очистить" onclick="clearr();"><br><span style="color:#FFF;">Возможные варианты расшифровки:</span>';
 }
 document.getElementById('actDec').onclick=function(){
 	let key=document.getElementById('key').value;

@@ -584,8 +584,8 @@ document.getElementById('actDec').onclick=function(){
 	let msg=document.getElementById('dec').value.toUpperCase().match(/^.{0,}(AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II) ([A-F0-9\s]+) (AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II).{0,}$/);
 	let tempDec=123;
 	if(msg!=null){
-		document.getElementById('dec').value=msg[1]+' '+msg[2]+' '+msg[3];
-		tempDec=dec(msg[1]+' '+msg[2]+' '+msg[3],key);
+		document.getElementById('dec').value='VK CO FF EE'+' '+msg[2]+' '+'VK CO FF EE';
+		tempDec=dec('VK CO FF EE'+' '+msg[2]+' '+'VK CO FF EE',key);
 	}
 	if(tempDec===null){
 		document.getElementById('resDec').style.color='#F00';
@@ -613,7 +613,7 @@ var keyss=[];
 document.getElementById('act2').onclick=function(){
 	document.getElementById('resDec').value='';
 	let msg=document.getElementById('dec').value.toUpperCase().match(/^.{0,}(AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II) ([A-F0-9\s]+) (AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II).{0,}$/);
-	if(msg!=null)TTD(msg[1]+' '+msg[2]+' '+msg[3]);
+	if(msg!=null)TTD('VK CO FF EE'+' '+msg[2]+' '+'VK CO FF EE');
 }
 
 function getWords1(){

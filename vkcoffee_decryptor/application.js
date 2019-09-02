@@ -460,7 +460,7 @@ var dec=function(msg,key){
 var possible=function(msg,key){
 	if(typeof(key)!=typeof(''))key='';
 	let msg2=data2.COFFEE.decrypt(msg,key);
-	if(msg2.math(/[a-zA-Zа-яА-Я0-9-_=+!?()]/))return msg2;
+	if(msg2.match(/[a-zA-Zа-яА-Я0-9-_=+!?()]/))return msg2;
 	return null;
 };
 var enc=function(msg,key){

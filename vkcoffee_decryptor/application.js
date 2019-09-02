@@ -457,14 +457,31 @@ var dec=function(msg,key){
 	if(msg===check)return msg2;
 	return null;
 };
+var possible=function(msg,key){
+	if(typeof(key)!=typeof(''))key='';
+	let msg2=data2.COFFEE.decrypt(msg,key);
+	if(msg2.math(/[a-zA-Zа-яА-Я0-9-_=+!?()]/))return msg2;
+	return null;
+};
 var enc=function(msg,key){
     if(typeof(key)!=typeof('')){return data2.COFFEE.encrypt(msg,'');}
     return data2.COFFEE.encrypt(msg,key);
 };
 var canBF=false,BFin=false;
+function crt(msg,key){
+	if(typeof(key)!=typeof('')){return data2.COFFEE.encrypt(msg,'');}
+	let poss=0;
+	poss=possible(msg,key);
+	if(typeof(poss)=='string'){
+		let kekin=document.createElement('input');
+		kekin.value=poss;
+		document.getElementById('possibles').appendChild(kekin);
+	}
+}
 function TTD(msg){
     let msg2=dec(msg);
     if(msg2!=null)return msg2;
+	crt(msg);
 	if(!BFin)init_BF(msg);
 	if(BFin){canBF=true;for(let i=0;i<15;i++)BF(msg);}
 }
@@ -486,6 +503,7 @@ function BF(msg){
 				canBF=false;
 				return;
 			}
+			crt(msg,keyss[k]);
     	}else{
     		gi=0;
 			document.getElementById('key').style.color='#F00';
@@ -577,6 +595,9 @@ function init_BF(msg){
 		TTD(msg);
 	}
 }
+function clearr(){
+	document.getElementById('possibles').innerHTML='<input type="button" value="очистить" onclick="clearr();"><br><span>Возможные варианты расшифровки:</span>';
+}
 document.getElementById('actDec').onclick=function(){
 	let key=document.getElementById('key').value;
 	document.getElementById('resDec').value='';
@@ -591,6 +612,7 @@ document.getElementById('actDec').onclick=function(){
 		document.getElementById('resDec').style.color='#F00';
 		document.getElementById('resDec').value="<Нужен ключ>";
 		WorkerTimer.setTimeout(function(){document.getElementById('resDec').style.color='';},2e3);
+		crt('VK CO FF EE'+' '+msg[2]+' '+'VK CO FF EE',key);
 	}else if(tempDec==123){
 		document.getElementById('resDec').style.color='#F00';
 		document.getElementById('resDec').value='<Ошибка в шифре>';

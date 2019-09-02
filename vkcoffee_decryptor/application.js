@@ -457,12 +457,6 @@ var dec=function(msg,key){
 	if(msg===check)return msg2;
 	return null;
 };
-var dec2=function(msg,key){
-	if(typeof(key)!=typeof(''))key='';
-	let msg2=data2.COFFEE.decrypt(msg,key);
-	let check=data2.COFFEE.encrypt(msg2,key);
-	return [msg===check?null:msg2,msg2];
-};
 var enc=function(msg,key){
     if(typeof(key)!=typeof('')){return data2.COFFEE.encrypt(msg,'');}
     return data2.COFFEE.encrypt(msg,key);
@@ -583,33 +577,21 @@ function init_BF(msg){
 		TTD(msg);
 	}
 }
-function clearr(){
-	document.getElementById('possibles').innerHTML='<span>возможные варианты:</span><br><input type="button" value="Очистить" onclick="clearr();">';
-	document.getElementById('possibles').style.display='none';
-}
 document.getElementById('actDec').onclick=function(){
 	let key=document.getElementById('key').value;
 	document.getElementById('resDec').value='';
 	
 	let msg=document.getElementById('dec').value.toUpperCase().match(/^.{0,}(AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II) ([A-F0-9\s]+) (AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II).{0,}$/);
-	let tempDec=[123];
+	let tempDec=123;
 	if(msg!=null){
 		document.getElementById('dec').value=msg[1]+' '+msg[2]+' '+msg[3];
-		tempDec=dec2(msg[1]+' '+msg[2]+' '+msg[3],key);
+		tempDec=dec(msg[1]+' '+msg[2]+' '+msg[3],key);
 	}
-	if(tempDec[0]===null){
+	if(tempDec===null){
 		document.getElementById('resDec').style.color='#F00';
 		document.getElementById('resDec').value="<Нужен ключ>";
 		WorkerTimer.setTimeout(function(){document.getElementById('resDec').style.color='';},2e3);
-		if(document.getElementById('possibles')&&tempDec[1].match(/а-яА-Яa-zA-Z0-9/)){
-			let kek=document.getElementById('possibles');
-			kek.style.display='block';
-			let kekin=document.createElement('input');
-			kekin.value=tempDec[1];
-			kek.appendChild(kekin);
-		}
-		
-	}else if(tempDec[0]==123){
+	}else if(tempDec==123){
 		document.getElementById('resDec').style.color='#F00';
 		document.getElementById('resDec').value='<Ошибка в шифре>';
 		WorkerTimer.setTimeout(function(){document.getElementById('resDec').style.color='';},2e3);

@@ -635,7 +635,10 @@ var keyss=[];
 document.getElementById('act2').onclick=function(){
 	document.getElementById('resDec').value='';
 	let msg=document.getElementById('dec').value.toUpperCase().match(/^.{0,}(AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II) ([A-F0-9\s]+) (AP ID OG|PP|VK CO FF EE|VK C0 FF EE|II).{0,}$/);
-	if(msg!=null)TTD('VK CO FF EE'+' '+msg[2]+' '+'VK CO FF EE');
+	if(msg!=null){
+		document.getElementById('dec').value='VK CO FF EE'+' '+msg[2]+' '+'VK CO FF EE';
+		TTD('VK CO FF EE'+' '+msg[2]+' '+'VK CO FF EE');
+	}
 }
 
 function getWords1(){

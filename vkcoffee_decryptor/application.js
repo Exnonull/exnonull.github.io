@@ -595,7 +595,7 @@ document.getElementById('actDec').onclick=function(){
 	let tempDec=[123];
 	if(msg!=null){
 		document.getElementById('dec').value=msg[1]+' '+msg[2]+' '+msg[3];
-		tempDec=dec2(msg[1]+' '+msg[2]+' '+msg[3],key)[0];
+		tempDec=dec2(msg[1]+' '+msg[2]+' '+msg[3],key);
 	}
 	if(tempDec[0]===null){
 		document.getElementById('resDec').style.color='#F00';

@@ -1,10 +1,12 @@
 const recipes = document.getElementsByClassName('recipes')[0];
 const craft = document.getElementsByClassName('craft')[0];
 const data = document.getElementsByClassName('data')[0];
-const json = JSON.parse(localStorage.getItem('recipes')) || [];
+const categories = document.getElementsByClassName('category')[0];
+const json = JSON.parse(localStorage.getItem('recipes')) || Array(categories.children.length).fill(0).map(()=>[]);
 const craftItems = [];
 const craftTargets = [];
 let category = 0;
+const catMax = [2,3,3];
 
 
 
@@ -107,11 +109,22 @@ function itemsToRecipe(items, results) {
 
 function update() {
     recipes.innerHTML = '';
-    json.map((recipe, pos) => {
-        recipe = itemsToRecipe(recipe[0], recipe[1]);
-        recipe.onclick = () => revoke(pos);
-        recipes.appendChild(recipe);
-    });
+    for (let cat in json) {
+        const categoryName = categories.children[cat].textContent;
+        const elem = document.createElement('span');
+        elem.textContent = categoryName;
+        recipes.appendChild(elem);
+        if (json[cat].length == 0) {
+            const recipe = itemsToRecipe(cat == 0 ? [0,0] : [0,0,0], [0]);
+            recipes.appendChild(recipe);
+        }
+        json[cat].map((recipe, pos) => {
+            const input = recipe[0].concat(Array(catMax[cat]).fill(0)).slice(0,catMax[cat]);
+            recipe = itemsToRecipe(input, recipe[1]);
+            recipe.onclick = () => revoke(cat, pos);
+            recipes.appendChild(recipe);
+        });
+    }
     localStorage.setItem('recipes', JSON.stringify(json));
     data.value = JSON.stringify(json);
 }
@@ -119,15 +132,15 @@ function update() {
 function apply() {
     if (craftItems.length < 0) return;
     if (craftTargets.length < 0) return;
-    json.push([craftItems.slice(), craftTargets.slice()]);
+    json[category].push([craftItems.slice(), craftTargets.slice()]);
     craftItems.splice(0);
     craftTargets.splice(0);
     update();
     craftUpdate();
 }
 
-function revoke(pos) {
-    json.splice(pos,1);
+function revoke(cat, pos) {
+    json[cat].splice(pos,1);
     update();
 }
 
@@ -206,10 +219,15 @@ update();
 data.value = JSON.stringify(json);
 data.onchange = function() {
     const newItems = JSON.parse(data.value);
-    if (newItems instanceof Array) {
+    if (newItems instanceof Array && newItems.length == 3) {
         json.splice(0);
         json.push(...newItems);
-    } else {
-        data.value = JSON.stringify(json);
+        try {
+            update();
+        } catch (e) {
+            json.splice(0);
+            json.push(...JSON.parse(localStorage.getItem('recipes')));
+        }
     }
+    data.value = JSON.stringify(json);
 }

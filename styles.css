@@ -26,14 +26,22 @@ main {
     background-color: #142637;
     border-radius: 8px;
 }
-.add {
-    background-color: #187E18;
-    color: #D1E505;
+button {
     border: none;
     border-radius: 16px;
     cursor: pointer;
     width: 100px;
     height: 30px;
+}
+.clear {
+    background-color: red;
+    color: white;
+    height: 17px;
+    width: 60px;
+}
+.add {
+    background-color: #187E18;
+    color: #D1E505;
     margin: 20px 0px;
 }
 .add:hover {

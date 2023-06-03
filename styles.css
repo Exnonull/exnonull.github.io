@@ -1,0 +1,34 @@
+body {
+    background-color: #212121;
+}
+main {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.slot {
+    border: solid #4E4E4E 4px;
+    background-color: #171717;
+    width: 43px;
+    height: 43px;
+}
+.slot.active {
+    border: solid #CACACA 4px;
+    background-color: #373737;
+    border-radius: 8px;
+}
+.slot.special {
+    border: solid #538FCA 4px;
+    background-color: #142637;
+    border-radius: 8px;
+}
+.add {
+    background-color: #187E18;
+    color: #D1E505;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+}

@@ -47,12 +47,14 @@ const titles = [
     'Health Potion\n<Black Mushroom>',
     'Cloth\n<Green Fibre, Green Fibre>',
     'Big Health Potion\n<Green Herb, Green Herb>',
-    'Big Health Potion\n<Red Flower, Red Flower>',
+    'Big Health Potion\n<Red Flower, Red Flower | Garlic, Garlic>',
     'Big Health Potion\n<Green Flower, Green Flower>',
     'Big Health Potion\n<Black Mushroom>',
     'Bandage\n<Cloth<Green Fibre>, Green Flower>',
     'Bandage\n<Cloth<Green Fibre>, Garlic>',
     'Bandage\n<Cloth<Green Fibre>, Green Herb>',
+    'Bandage\n<Cloth<Green Fibre>, Black Mushroom>',
+    'Bandage\n<Cloth<Green Fibre>, Black Mushroom, Black Mushroom>',
 ];
 const descriptions = [
     'Air of abyss, contains particles of force field.',
@@ -91,10 +93,12 @@ const descriptions = [
     'A potion brewed with high quality ingredients, greatly restores health\n<+75% hp>',
     'A potion brewed with high quality ingredients, greatly restores health\n<+0% hp>',
     'A potion brewed with high quality ingredients, greatly restores health\n<+0% hp>',
-    'A potion brewed with high quality ingredients, greatly restores health',
+    'A potion brewed with high quality ingredients, greatly restores health\n<-200%+ hp>',
     'Used to heal wounds instantly.\n<+50% hp>',
     'Used to heal wounds instantly.\n<+50% hp>',
     'Used to heal wounds instantly.',
+    'Used to heal wounds instantly.\n<-50% hp>',
+    'Used to heal wounds instantly.\n<-200%+ hp>',
 ];
 
 

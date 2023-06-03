@@ -72,14 +72,14 @@ const descriptions = [
     'Used to heal wounds instantly.\n<+25% hp>',
     'Used to heal wounds instantly.\n<+25% hp>',
     'Used to heal wounds instantly.\n<-50% hp>',
-    'Used to heal wounds instantly.\n<-150%+ hp>',
+    'Used to heal wounds instantly.\n<-200%+ hp>',
     'Used to heal wounds instantly.\n<-50% hp>',
     'Used to heal wounds instantly.\n<-50% hp>',
-    'A simple potion that slightly restores health',
-    'A simple potion that slightly restores health',
-    'A simple potion that slightly restores health',
-    'Allows the potion\'s user to see resources through obstructions.',
-    'A simple potion that slightly restores health',
+    'A simple potion that slightly restores health\n<+35% hp>',
+    'A simple potion that slightly restores health\n<+0% hp>',
+    'A simple potion that slightly restores health\n<+0% hp>',
+    'Allows the potion\'s user to see resources through obstructions.\n<30 sec>',
+    'A simple potion that slightly restores health\n<-200% hp>',
 ];
 
 

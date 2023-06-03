@@ -132,7 +132,7 @@ input {
   .tooltip .tooltiptext {
     margin-top: 4px;
     visibility: hidden;
-    width: 120px;
+    width: 250px;
     background-color: #00000088;
     color: #fff;
     text-align: center;

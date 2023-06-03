@@ -2,7 +2,7 @@ const recipes = document.getElementsByClassName('recipes')[0];
 const craft = document.getElementsByClassName('craft')[0];
 const data = document.getElementsByClassName('data')[0];
 const categories = document.getElementsByClassName('category')[0];
-const initialList = [[[[1,1],[14]],[[1,2],[15]],[[1,11],[16]],[[1,8],[17]]],[[[3],[12]],[[3,3],[13]],[[12],[3]],[[13],[3]],[[13],[12]]],[]];
+const initialList = [[[[1,1],[14]],[[1,2],[15]],[[1,11],[16]],[[1,8],[17]]],[[[3],[12]],[[3,3],[13]],[[12],[3]],[[13],[3]],[[13],[12]],[[2,10],[22]],[[2,10,10],[22]],[[2,6],[18]],[[2,6,6],[19]],[[2,4],[20]],[[2,4,4],[21]]],[]];
 const json = JSON.parse(localStorage.getItem('recipes')) || initialList;
 const craftItems = [];
 const craftTargets = [];
@@ -28,10 +28,15 @@ const titles = [
     'Mold Gel',
     'Glass Bottle',
     'Big Glass Bottle',
-    'Torch <Stick>',
-    'Torch <Cloth>',
-    'Torch <Mold Gel>',
-    'Torch <Bottle of Oil>',
+    'Torch\n<Stick>',
+    'Torch\n<Cloth>',
+    'Torch\n<Mold Gel>',
+    'Torch\n<Bottle of Oil>',
+    'Bandage\n<Green Herb>',
+    'Bandage\n<Green Herb, Green Herb>',
+    'Bandage\n<Green Flower>',
+    'Bandage\n<Green Flower, Green Flower>',
+    'Bandage\n<Garlic>',
 ];
 const descriptions = [
     'Air of abyss, contains particles of force field.',
@@ -52,6 +57,11 @@ const descriptions = [
     'Perfect for lighting up the dark spots.',
     'Perfect for lighting up the dark spots.',
     'Perfect for lighting up the dark spots.',
+    'Used to heal wounds instantly.',
+    'Used to heal wounds instantly.',
+    'Used to heal wounds instantly.',
+    'Used to heal wounds instantly.',
+    'Used to heal wounds instantly.',
 ];
 
 
@@ -79,7 +89,7 @@ function itemToSlot(item) {
 
     const hint = document.createElement('div');
     hint.className = 'tooltiptext';
-    hint.innerHTML = titles[item]+'\n'+descriptions[item];
+    hint.textContent = titles[item]+'\n'+descriptions[item];
     div.appendChild(hint);
 
     return div;

@@ -2,7 +2,8 @@ const recipes = document.getElementsByClassName('recipes')[0];
 const craft = document.getElementsByClassName('craft')[0];
 const data = document.getElementsByClassName('data')[0];
 const categories = document.getElementsByClassName('category')[0];
-const json = JSON.parse(localStorage.getItem('recipes')) || Array(categories.children.length).fill(0).map(()=>[]);
+const initialList = [[[[1,1],[14]],[[1,2],[15]],[[1,11],[16]],[[1,8],[17]]],[[[3],[12]],[[3,3],[13]],[[12],[3]],[[13],[3]],[[13],[12]]],[]];
+const json = JSON.parse(localStorage.getItem('recipes')) || initialList;
 const craftItems = [];
 const craftTargets = [];
 let category = 0;
@@ -137,8 +138,8 @@ function update() {
 }
 
 function apply() {
-    if (craftItems.length < 0) return;
-    if (craftTargets.length < 0) return;
+    if (craftItems.length < 1) return;
+    if (craftTargets.length < 1) return;
     json[category].push([craftItems.slice(), craftTargets.slice()]);
     craftItems.splice(0);
     craftTargets.splice(0);

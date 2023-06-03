@@ -28,7 +28,7 @@
       <div class="craft"></div>
       <span>
         data: <input class="data" placeholder="data">
-        <button class="clear" onclick="confirm('Are you sure?') && localStorage.removeItem('recipes') && location.reload()">clear all</button>
+        <button class="clear" onclick="confirm('Are you sure?') && (localStorage.removeItem('recipes'), location.reload())">Reset</button>
       </span>
     </div>
     <div class="items"></div>

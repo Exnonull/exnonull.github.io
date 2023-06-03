@@ -13,6 +13,7 @@ const catMax = [2,3,3];
 
 
 const titles = [
+    'Air',
     'Wood Piece',
     'Cloth',
     'Glass Shard',
@@ -32,23 +33,24 @@ const titles = [
     'Torch <Bottle of Oil>',
 ];
 const descriptions = [
-    'Wood Piece',
-    'Cloth',
-    'Glass Shard',
-    'Green Flower',
-    'Red Flower',
-    'Green Herb',
-    'Green Fibre',
-    'Bottle of Oil',
-    'Black Mushroom',
-    'Garlic',
-    'Mold Gel',
-    'Glass Bottle',
-    'Big Glass Bottle',
-    'Torch <Stick>',
-    'Torch <Cloth>',
-    'Torch <Mold Gel>',
-    'Torch <Bottle of Oil>',
+    'Air of abyss, contains particles of force field.',
+    'A piece of old wood. It can be burnt.',
+    'Piece of cloth, often used into medicine due to its capability to absorb liquids.',
+    'Very sharp, be careful when handling this thing.',
+    'This flower seems to be somehow attracted magnetically by plants.',
+    'This flower seems to be somehow attracted magnetically by precious metals.',
+    'A natural herb that is said to develop healing powers when mixed with boiling water and cooled down.',
+    'Plant based fibre with slight healing capabilities, can be used to make a soft and elastic fabric.',
+    'Bottle of flammable oil.',
+    'Odd looking mushroom.',
+    'This thing stinks like old socks.',
+    'This gel is very light and flammable.',
+    'Empty glass bottle.',
+    'Empty big glass bottle.',
+    'Perfect for lighting up the dark spots.',
+    'Perfect for lighting up the dark spots.',
+    'Perfect for lighting up the dark spots.',
+    'Perfect for lighting up the dark spots.',
 ];
 
 
@@ -69,11 +71,16 @@ function itemImage(item) {
 
 function itemToSlot(item) {
     const div = document.createElement('div');
-    div.className = 'slot ';
+    div.className = 'slot tooltip ';
     if (item != 0) div.className += 'active ';
     if ([8,9].includes(item)) div.className += 'special ';
     div.appendChild(itemImage(item));
-    div.itemId = item;
+
+    const hint = document.createElement('div');
+    hint.className = 'tooltiptext';
+    hint.innerHTML = titles[item]+'\n'+descriptions[item];
+    div.appendChild(hint);
+
     return div;
 }
 
@@ -212,7 +219,7 @@ function viewItems(items) {
     });
 }
 
-viewItems(titles.map((v,k)=>k+1));
+viewItems(titles.map((v,k)=>k+1).slice(0,-1));
 craftUpdate();
 update();
 

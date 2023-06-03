@@ -68,7 +68,7 @@ button {
     justify-content: flex-start;
 }
 .recipe:hover {
-    background-color: #4E4E4E;
+    background-color: #CACACA88;
 }
 .recipe > span {
     color: white;
@@ -119,3 +119,29 @@ a {
 input {
     border: none;
 }
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    margin-top: 4px;
+    visibility: hidden;
+    width: 120px;
+    background-color: #00000088;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    white-space: pre-wrap;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }

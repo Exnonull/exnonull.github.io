@@ -18,7 +18,14 @@
   <main>
     <div class="list">
       <div class="recipes"></div>
-      <button class="add">+ Recipe</button>
+      <button class="add" onclick="apply()">+ Recipe</button>
+      <div class="category">
+        <a onclick="setCategory(0)" class="active">Hands</a>
+        <a onclick="setCategory(1)">Workbench</a>
+        <a onclick="setCategory(2)">Cauldron</a>
+      </div>
+      <div class="craft"></div>
+      <span>data: <input class="data" placeholder="data"></span>
     </div>
     <div class="items"></div>
   </main>

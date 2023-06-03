@@ -1,5 +1,6 @@
 body {
     background-color: #212121;
+    color: white;
 }
 main {
     display: flex;
@@ -12,6 +13,8 @@ main {
     background-color: #171717;
     width: 43px;
     height: 43px;
+    margin: 12.5px;
+    cursor: pointer;
 }
 .slot.active {
     border: solid #CACACA 4px;
@@ -31,4 +34,80 @@ main {
     cursor: pointer;
     width: 100px;
     height: 30px;
+    margin: 20px 0px;
+}
+.add:hover {
+    background-color: #00FF00AA;
+}
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.recipes {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.recipe {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.recipe:hover {
+    background-color: #4E4E4E;
+}
+.recipe > span {
+    color: white;
+    font-size: 36px;
+    text-align: center;
+}
+.list {
+    flex: 1;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.items {
+    flex: 1;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+a {
+    cursor: pointer;
+}
+.category {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.category > a {
+    color: gray;
+    border-radius: 16px;
+    margin: 5px 10px;
+    padding: 5px 10px;
+}
+.category > a.active {
+    color: white;
+    border-radius: 16px;
+    margin: 5px 10px;
+    padding: 5px 10px;
+}
+.category > a:hover {
+    background-color: #4E4E4E;
+}
+input {
+    border: none;
 }

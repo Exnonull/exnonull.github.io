@@ -1,11 +1,65 @@
 const recipes = document.getElementsByClassName('recipes')[0];
-const craft = document.getElementsByTagName('footer')[0];
-const json = [];
+const craft = document.getElementsByClassName('craft')[0];
+const data = document.getElementsByClassName('data')[0];
+const json = JSON.parse(localStorage.getItem('recipes')) || [];
 const craftItems = [];
 const craftTargets = [];
+let category = 0;
+
+
+
+
+
+const titles = [
+    'Wood Piece',
+    'Cloth',
+    'Glass Shard',
+    'Green Flower',
+    'Red Flower',
+    'Green Herb',
+    'Green Fibre',
+    'Bottle of Oil',
+    'Black Mushroom',
+    'Garlic',
+    'Mold Gel',
+    'Glass Bottle',
+    'Big Glass Bottle',
+    'Torch <Stick>',
+    'Torch <Cloth>',
+    'Torch <Mold Gel>',
+    'Torch <Bottle of Oil>',
+];
+const descriptions = [
+    'Wood Piece',
+    'Cloth',
+    'Glass Shard',
+    'Green Flower',
+    'Red Flower',
+    'Green Herb',
+    'Green Fibre',
+    'Bottle of Oil',
+    'Black Mushroom',
+    'Garlic',
+    'Mold Gel',
+    'Glass Bottle',
+    'Big Glass Bottle',
+    'Torch <Stick>',
+    'Torch <Cloth>',
+    'Torch <Mold Gel>',
+    'Torch <Bottle of Oil>',
+];
+
+
+
+
 
 function itemImage(item) {
-    if (item == 0) return document.createElement('div');
+    if (item == 0) {
+        const img = document.createElement('div');
+        img.style.width = '43px';
+        img.style.height = '43px';
+        return img;
+    }
     const img = document.createElement('img');
     img.src = './images/'+item+'.png';
     return img;
@@ -17,19 +71,19 @@ function itemToSlot(item) {
     if (item != 0) div.className += 'active ';
     if ([8,9].includes(item)) div.className += 'special ';
     div.appendChild(itemImage(item));
+    div.itemId = item;
     return div;
 }
 
 function slotsToRow(slots) {
     const row = document.createElement('div');
     row.className = 'row';
-    console.log(slots);
     slots.map(slot => row.appendChild(slot));
     return row;
 }
 
 function rowsToRecipe(src, dist) {
-    const recipe = document.createElement('div');
+    const recipe = document.createElement('a');
     recipe.className = 'recipe';
     const equality = document.createElement('span');
     equality.textContent = '=';
@@ -39,24 +93,37 @@ function rowsToRecipe(src, dist) {
     return recipe;
 }
 
-function itemsToRecipe(items, result) {
+function itemsToRecipe(items, results) {
     const recipe = rowsToRecipe(
         slotsToRow(items.map(itemToSlot)),
-        slotsToRow([itemToSlot(result)]),
+        slotsToRow(results.map(itemToSlot)),
     );
     return recipe;
 }
 
+
+
+
+
 function update() {
     recipes.innerHTML = '';
-    json.map(recipe => recipes.appendChild(itemsToRecipe(recipe[0], recipe[1])));
+    json.map((recipe, pos) => {
+        recipe = itemsToRecipe(recipe[0], recipe[1]);
+        recipe.onclick = () => revoke(pos);
+        recipes.appendChild(recipe);
+    });
+    localStorage.setItem('recipes', JSON.stringify(json));
+    data.value = JSON.stringify(json);
 }
 
 function apply() {
+    if (craftItems.length < 0) return;
+    if (craftTargets.length < 0) return;
     json.push([craftItems.slice(), craftTargets.slice()]);
     craftItems.splice(0);
     craftTargets.splice(0);
     update();
+    craftUpdate();
 }
 
 function revoke(pos) {
@@ -64,14 +131,85 @@ function revoke(pos) {
     update();
 }
 
+
+
+
+
 function craftUpdate() {
     craft.innerHTML = '';
-    craft.appendChild(itemsToRecipe(craftItems, craftTargets));
+    let items = craftItems.slice();
+    let targets = craftTargets.slice();
+    if (craftItems.length < 3) items.push(...Array(3-craftItems.length).fill(0));
+    if (craftTargets.length < 1) targets.push(0);
+    craft.appendChild(itemsToRecipe(items, targets));
+    [...craft.children[0].children[0].children].forEach((element, pos) => {
+        element.onclick = () => {
+            craftItems.splice(pos, 1);
+            craftUpdate();
+        };
+    });
+    [...craft.children[0].children[2].children].forEach((element, pos) => {
+        element.onclick = () => {
+            craftTargets.splice(pos, 1);
+            craftUpdate();
+        };
+    });
 }
+
+function addCraftItem(id) {
+    craftItems.push(id);
+    craftUpdate();
+}
+
+function addCraftTarget(id) {
+    craftTargets.push(id);
+    craftUpdate();
+}
+
+
+
+
+
+function setCategory(id) {
+    const cats = document.getElementsByClassName('category')[0].children;
+    for (let i in cats) {
+        cats[i].className = '';
+        if (i == id) cats[i].className = 'active';
+    }
+    category = id;
+}
+
+
+
+
 
 function viewItems(items) {
     const preview = document.getElementsByClassName('items')[0];
-    items.map(itemToSlot).map(slot => preview.appendChild(slot));
+    items.map(id => [id, itemToSlot(id)]).map(([id, slot]) => {
+        const a = document.createElement('a');
+        a.appendChild(slot);
+        a.onclick = () => addCraftItem(id);
+        a.oncontextmenu = function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            addCraftTarget(id);
+            return false;
+        };
+        preview.appendChild(a);
+    });
 }
 
-viewItems(Array(7).fill(0).map((v,k)=>k+1));
+viewItems(titles.map((v,k)=>k+1));
+craftUpdate();
+update();
+
+data.value = JSON.stringify(json);
+data.onchange = function() {
+    const newItems = JSON.parse(data.value);
+    if (newItems instanceof Array) {
+        json.splice(0);
+        json.push(...newItems);
+    } else {
+        data.value = JSON.stringify(json);
+    }
+}

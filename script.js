@@ -2,7 +2,7 @@ const recipes = document.getElementsByClassName('recipes')[0];
 const craft = document.getElementsByClassName('craft')[0];
 const data = document.getElementsByClassName('data')[0];
 const categories = document.getElementsByClassName('category')[0];
-const initialList = [[[[1,1],[14]],[[1,2],[15]],[[1,11],[16]],[[1,8],[17]]],[[[3],[12]],[[3,3],[13]],[[12],[3]],[[13],[3]],[[13],[12]],[[2,6],[18]],[[2,6,6],[19]],[[2,4],[20]],[[2,4,4],[21]],[[2,10],[22]],[[2,10,10],[22]],[[2,5],[22]],[[2,5,5],[22]]],[]];
+const initialList = [[[[1,1],[14]],[[1,2],[15]],[[1,11],[16]],[[1,8],[17]]],[[[3],[12]],[[3,3],[13]],[[12],[3]],[[13],[3]],[[13],[12]],[[2,6],[18]],[[2,6,6],[19]],[[2,4],[20]],[[2,4,4],[21]],[[2,10],[22]],[[2,10,10],[22]],[[2,5],[22]],[[2,5,5],[22]],[[2,9],[23]],[[2,9,9],[24]]],[]];
 const json = JSON.parse(localStorage.getItem('recipes')) || initialList;
 const craftItems = [];
 const craftTargets = [];
@@ -37,6 +37,8 @@ const titles = [
     'Bandage\n<Green Flower>',
     'Bandage\n<Green Flower, Green Flower>',
     'Bandage\n<Garlic | Red Flower>',
+    'Bandage\n<Black Mushroom>',
+    'Bandage\n<Black Mushroom, Black Mushroom>',
 ];
 const descriptions = [
     'Air of abyss, contains particles of force field.',
@@ -57,6 +59,8 @@ const descriptions = [
     'Perfect for lighting up the dark spots.',
     'Perfect for lighting up the dark spots.',
     'Perfect for lighting up the dark spots.',
+    'Used to heal wounds instantly.',
+    'Used to heal wounds instantly.',
     'Used to heal wounds instantly.',
     'Used to heal wounds instantly.',
     'Used to heal wounds instantly.',

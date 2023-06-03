@@ -29,6 +29,11 @@ main {
     background-color: #142637;
     border-radius: 8px;
 }
+.slot.very-special {
+    border: solid #27D496 4px;
+    background-color: #093B2B;
+    border-radius: 8px;
+}
 button {
     border: none;
     border-radius: 16px;

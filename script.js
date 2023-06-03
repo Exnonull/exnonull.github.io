@@ -2,7 +2,7 @@ const recipes = document.getElementsByClassName('recipes')[0];
 const craft = document.getElementsByClassName('craft')[0];
 const data = document.getElementsByClassName('data')[0];
 const categories = document.getElementsByClassName('category')[0];
-const initialList = [[[[1,1],[14]],[[1,2],[15]],[[1,11],[16]],[[1,8],[17]]],[[[3],[12]],[[3,3],[13]],[[12],[3]],[[13],[3]],[[13],[12]],[[2,6],[18]],[[2,6,6],[19]],[[2,4],[20]],[[2,4,4],[21]],[[2,10],[22]],[[2,10,10],[22]],[[2,5],[22]],[[2,5,5],[22]],[[2,9],[23]],[[2,9,9],[24]],[[2,6,9],[25]],[[2,4,9],[26]],[[2,10,9],[23]],[[12,12],[13]],[[13,13],[13]],[[12,3],[13]],[[7,7],[32]]],[[[12,10],[27]],[[12,5],[27]],[[12,6],[28]],[[12,4],[29]],[[12,4],[30]],[[12,9],[31]]]];
+const initialList = [[[[1,1],[14]],[[1,2],[15]],[[1,11],[16]],[[1,8],[17]]],[[[3],[12]],[[3,3],[13]],[[12],[3]],[[13],[3]],[[13],[12]],[[2,6],[18]],[[2,6,6],[19]],[[2,4],[20]],[[2,4,4],[21]],[[2,10],[22]],[[2,10,10],[22]],[[2,5],[22]],[[2,5,5],[22]],[[2,9],[23]],[[2,9,9],[24]],[[2,6,9],[25]],[[2,4,9],[26]],[[2,10,9],[23]],[[12,12],[13]],[[13,13],[13]],[[12,3],[13]],[[7,7],[32]],[[32,4],[37]],[[32,10],[38]],[[32,6],[39]],[[13,6,6],[33]],[[13,5,5],[34]],[[13,4,4],[35]],[[13,9,9],[36]]],[[[12,10],[27]],[[12,5],[27]],[[12,6],[28]],[[12,4],[29]],[[12,4],[30]],[[12,9],[31]]]];
 const json = JSON.parse(localStorage.getItem('recipes')) || initialList;
 const craftItems = [];
 const craftTargets = [];
@@ -46,6 +46,13 @@ const titles = [
     'Harvester Potion',
     'Health Potion\n<Black Mushroom>',
     'Cloth\n<Green Fibre, Green Fibre>',
+    'Big Health Potion\n<Green Herb, Green Herb>',
+    'Big Health Potion\n<Red Flower, Red Flower>',
+    'Big Health Potion\n<Green Flower, Green Flower>',
+    'Big Health Potion\n<Black Mushroom>',
+    'Bandage\n<Cloth<Green Fibre>, Green Flower>',
+    'Bandage\n<Cloth<Green Fibre>, Garlic>',
+    'Bandage\n<Cloth<Green Fibre>, Green Herb>',
 ];
 const descriptions = [
     'Air of abyss, contains particles of force field.',
@@ -81,6 +88,13 @@ const descriptions = [
     'Allows the potion\'s user to see resources through obstructions.\n<30 sec>',
     'A simple potion that slightly restores health\n<-200% hp>',
     'Piece of cloth, often used into medicine due to its capability to absorb liquids.',
+    'A potion brewed with high quality ingredients, greatly restores health\n<+75% hp>',
+    'A potion brewed with high quality ingredients, greatly restores health\n<+0% hp>',
+    'A potion brewed with high quality ingredients, greatly restores health\n<+0% hp>',
+    'A potion brewed with high quality ingredients, greatly restores health',
+    'Used to heal wounds instantly.\n<+50% hp>',
+    'Used to heal wounds instantly.\n<+50% hp>',
+    'Used to heal wounds instantly.',
 ];
 
 

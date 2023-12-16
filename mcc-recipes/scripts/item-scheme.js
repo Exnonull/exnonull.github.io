@@ -4,6 +4,7 @@ const emptyItem = '[Empty]';
 const anyItem = '[Any]';
 const timeProcess = '[Time]';
 const furnaceProcess = '[Furnace]';
+const ashProcess = '[Ash Sifter]';
 
 const recipeFrom = ({type, sources}) => ({type, sources});
 const recipeTo = (result, {type, sources}) => ({result, type, sources});

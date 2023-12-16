@@ -147,6 +147,8 @@ craftItem([
   ["Enriched Gravity Coil", "Gravity Coil", "Enriched Blue Cube"],
   ["Conveyor Belt", "Speed Coil", "Copper Cube"],
   ["Alternating Conveyor Belt", "Conveyor Belt", "Purple Cube"],
+  ["Sledgehammer", "Stick", "Plate Cube",],
+  ["Bridger", "Wood Cube", "Plate Cube",],
 
 
   ["Blade", "Forge Cube", "Copper"],
@@ -161,6 +163,12 @@ craftItem([
   ["Chromium Cube", "Chromium", "White Cube"],
   ["Flesh Barricade", "Chromium Cube", "Flesh Cube"],
   ["Flesh Wall", "Plate Cube", "Flesh Barricade"],
+  ["Stone Wall", "Plate Cube", "Stone Barricade"],
+  ["Stone Window Wall", "Stone Wall", "Green Cube"],
+  ["Wooden Wall", "Plate Cube", "Wooden Barricade"],
+  [ashProcess, "Wooden Wall", "Soil Cube"],
+  ["Concrete Wall", "Plate Cube", "Concrete Barricade"],
+  ["Reinforced Concrete Wall", "Concrete Wall", "Concrete Barricade"],
 
   ["Chromium Ring", "Chromium Cube", "Chromium"],
   ["Semi-Powerful Magic Crystal", "Magic Crystal", "Magic Crystal"],
@@ -180,6 +188,7 @@ craftItem([
   ["Impact Bomb Cube", "Impact Cube", "Bomb Cube"],
 
   [emptyItem, "Ash Cube", furnaceProcess],
+  ["Dirt Cube", "Mud Cube", furnaceProcess],
   ["Glacier Cube", "Permafrost Cube", furnaceProcess],
   ["Ice Cube", "Glacier Cube", furnaceProcess],
   ["Water Cube", "Ice Cube", furnaceProcess],
@@ -199,14 +208,12 @@ craftItem([
   ["Molten Sphere", "Iron", furnaceProcess],
   ["Molten Sphere", "Rusted Iron", furnaceProcess],
   ["Molten Sphere", "Gold", furnaceProcess],
-  ["Molten Sphere", "Pyrolite", furnaceProcess],
   ["Molten Sphere", "Slightly Oxidised Copper", furnaceProcess],
   ["Molten Sphere", "Heavily Oxidised Copper", furnaceProcess],
   ["Molten Sphere", "Copper Cube", furnaceProcess],
   ["Molten Sphere", "Iron Cube", furnaceProcess],
   ["Molten Sphere", "Rusted Iron Cube", furnaceProcess],
   ["Molten Sphere", "Gold Cube", furnaceProcess],
-  ["Molten Sphere", "Pyrolite Cube", furnaceProcess],
   ["Molten Sphere", "Slightly Oxidised Copper Cube", furnaceProcess],
   ["Molten Sphere", "Heavily Oxidised Copper Cube", furnaceProcess],
   ["Molten Sphere", "Corruption", furnaceProcess],
@@ -221,4 +228,16 @@ craftItem([
   ["Heavily Oxidised Copper", "Slightly Oxidised Copper", timeProcess],
   ["Slightly Oxidised Copper Cube", "Copper Cube", timeProcess],
   ["Heavily Oxidised Copper Cube", "Slightly Oxidised Copper Cube", timeProcess],
+
+  ["Mud Cube", "Ash Cube", ashProcess], // requires Water Cube
+  ["Sand Cube", "Ash Cube", ashProcess], // requires Water Cube
+  ["Forge Cube", "Ash Cube", ashProcess], // requires Water Cube
+
+  ["Dirt Cube", "Ash Cube", ashProcess],
+  ["Rock Cube", "Ash Cube", ashProcess],
+  ["Gold", "Ash Cube", ashProcess],
+  ["Iron", "Ash Cube", ashProcess],
+  ["Copper", "Ash Cube", ashProcess],
+  ["Gunpowder", "Ash Cube", ashProcess],
+  ["White Cube", "Ash Cube", ashProcess],
 ]);

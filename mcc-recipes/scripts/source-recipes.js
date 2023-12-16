@@ -165,7 +165,7 @@ craftItem([
   ["Impact Cube", "Explosive Cube", "Enrichment Cube"],
   ["Impact Bomb Cube", "Impact Cube", "Bomb Cube"],
 
-  ["??? Cube", "Impact Bomb Cube", "Discombobulated White Cube"],
+  ["<???>", "Impact Bomb Cube", "Discombobulated White Cube"],
 ]);
 
 furnaceItem([

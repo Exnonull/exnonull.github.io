@@ -697,23 +697,23 @@
                 let rec;
 
                 if (r.type == 'craft') rec = `<div class="recipeData craftRecipe">
-                  <span class="slot sourceItem">${r.result}</span>
+                  <span class="slot sourceItem" title="${r.result}">${r.result}</span>
                   <span class="sign">:</span>
-                  <span class="slot sourceItem">${r.source[0]}</span>
+                  <span class="slot sourceItem" title="${r.source[0]}">${r.source[0]}</span>
                   <span class="sign">+</span>
-                  <span class="slot sourceItem">${r.source[1]}</span>
+                  <span class="slot sourceItem" title="${r.source[1]}">${r.source[1]}</span>
                 </div>`;
 
                 if (r.type == 'furnace') rec = `<div class="recipeData furnaceRecipe">
-                  <span class="slot sourceItem">${r.result}</span>
+                  <span class="slot sourceItem" title="${r.result}">${r.result}</span>
                   <span class="sign">:</span>
                   <span class="slot">Furnace</span>
                   <span class="sign">+</span>
-                  <span class="slot sourceItem">${r.source}</span>
+                  <span class="slot sourceItem" title="${r.source}">${r.source}</span>
                 </div>`;
 
                 if (r.type == 'time') rec = `<div class="recipeData timeRecipe">
-                  <span class="slot sourceItem">${r.result}</span>
+                  <span class="slot sourceItem" title="${r.result}">${r.result}</span>
                   <span class="sign">:</span>
                   <span class="slot sourceItem">Time</span>
                 </div>`;
@@ -741,21 +741,21 @@
                 if (r.type == 'craft') rec = `<div class="recipeData craftRecipe">
                   <span class="recipeType craft">Craft</span>
                   <span class="sign">:</span>
-                  <span class="slot sourceItem">${r.source[0]}</span>
+                  <span class="slot sourceItem" title="${r.source[0]}">${r.source[0]}</span>
                   <span class="sign">+</span>
-                  <span class="slot sourceItem">${r.source[1]}</span>
+                  <span class="slot sourceItem" title="${r.source[1]}">${r.source[1]}</span>
                 </div>`;
 
                 if (r.type == 'furnace') rec = `<div class="recipeData furnaceRecipe">
                   <span class="recipeType furnace">Furnace</span>
                   <span class="sign">:</span>
-                  <span class="slot sourceItem">${r.source}</span>
+                  <span class="slot sourceItem" title="${r.source}">${r.source}</span>
                 </div>`;
 
                 if (r.type == 'time') rec = `<div class="recipeData timeRecipe">
                   <span class="recipeType time">Time</span>
                   <span class="sign">:</span>
-                  <span class="slot sourceItem">${r.source}</span>
+                  <span class="slot sourceItem" title="${r.source}">${r.source}</span>
                 </div>`;
 
                 if (r.type == 'unknown') rec = `<div class="recipeData unknownRecipe">
@@ -771,7 +771,7 @@
           });
           [...el.querySelectorAll('.sourceItem')].forEach((i) => {
             i.onclick = function(e) {
-              openRecipe(this.textContent.getItem() || {name: this.textContent, recipes: [{type:'unknown'}]});
+              openRecipe(this.title.getItem() || {name: this.title, recipes: [{type:'unknown'}]});
 
               e.preventDefault();
               e.cancelBubble = true;
@@ -782,7 +782,7 @@
         function openRecipe(item) {
           let win = document.createElement('div');
           win = document.getElementsByClassName('recipes')[0].appendChild(win);
-          win.outerHTML = `<div class="recipe" style="left: ${window.outerWidth/2 - 275/2}px; top: ${document.querySelector('#input').offsetTop + 100}px;">
+          win.outerHTML = `<div class="recipe" id="check" style="left: ${window.outerWidth/2 - 275/2}px; top: ${document.querySelector('#input').offsetTop + 100}px;">
             <div class="head" draggable="true">
               <div class="change"><span>~</span></div>
               <div class="name"><span>${item.name}</span></div>
@@ -808,21 +808,21 @@
                   if (r.type == 'craft') rec = `<div class="recipeData craftRecipe">
                     <span class="recipeType craft">Craft</span>
                     <span class="sign">:</span>
-                    <span class="slot sourceItem">${r.source[0]}</span>
+                    <span class="slot sourceItem" title="${r.source[0]}">${r.source[0]}</span>
                     <span class="sign">+</span>
-                    <span class="slot sourceItem">${r.source[1]}</span>
+                    <span class="slot sourceItem" title="${r.source[1]}">${r.source[1]}</span>
                   </div>`;
 
                   if (r.type == 'furnace') rec = `<div class="recipeData furnaceRecipe">
                     <span class="recipeType furnace">Furnace</span>
                     <span class="sign">:</span>
-                    <span class="slot sourceItem">${r.source}</span>
+                    <span class="slot sourceItem" title="${r.source}">${r.source}</span>
                   </div>`;
 
                   if (r.type == 'time') rec = `<div class="recipeData timeRecipe">
                     <span class="recipeType time">Time</span>
                     <span class="sign">:</span>
-                    <span class="slot sourceItem">${r.source}</span>
+                    <span class="slot sourceItem" title="${r.source}">${r.source}</span>
                   </div>`;
 
                   if (r.type == 'unknown') rec = `<div class="recipeData unknownRecipe">
@@ -834,22 +834,18 @@
               }
             </div>
           </div>`;
+
+          const el = document.querySelector('#check');
+          el.item = item;
+          el.date = +new Date();
+          [...document.querySelectorAll('.recipe')].sort((a,b) => a.date - b.date).forEach((el, i) => {
+            el.style.zIndex = i;
+          });
+
           [...document.querySelectorAll('.recipe')].forEach(el => {
             if (el.was) return;
-            el.item = el.querySelector('.name').textContent.getItem();
             el.was = true;
-            el.date = +new Date();
-            [...document.querySelectorAll('.recipe')].sort((a,b) => a.date - b.date).forEach((el, i) => {
-              el.style.zIndex = i;
-            });
-
-            el.querySelector('.body').onclick = e => {
-              el.date = +new Date();
-              [...document.querySelectorAll('.recipe')].sort((a,b) => a.date - b.date).forEach((el, i) => {
-                el.style.zIndex = i;
-              });
-            };
-            el.querySelector('.head').onclick = e => {
+            el.onclick = e => {
               el.date = +new Date();
               [...document.querySelectorAll('.recipe')].sort((a,b) => a.date - b.date).forEach((el, i) => {
                 el.style.zIndex = i;
@@ -878,7 +874,7 @@
             });
             [...el.querySelectorAll('.sourceItem')].forEach((i) => {
               i.onclick = function(e) {
-                openRecipe(this.textContent.getItem() || {name: this.textContent, recipes: [{type:'unknown'}]});
+                openRecipe(this.title.getItem() || {name: this.title, recipes: [{type:'unknown'}]});
 
                 e.preventDefault();
                 e.cancelBubble = true;

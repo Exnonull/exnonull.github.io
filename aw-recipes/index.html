@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Abyss World Crafting</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link rel="stylesheet" href="styles.css?v=1.0">
+
+</head>
+
+<body>
+  <header>
+  </header>
+  <main>
+    <div class="list">
+      <div class="category">
+        <a onclick="setCategory(0)" class="active">Hands</a>
+        <a onclick="setCategory(1)">Workbench</a>
+        <a onclick="setCategory(2)">Cauldron</a>
+      </div>
+      <div class="craft"></div>
+      <button class="add" style="margin-left: 15px;" onclick="apply()">+ Recipe</button>
+      <span style="margin-left: 15px;">
+        data: <input class="data" placeholder="data">
+        <button class="clear" onclick="confirm('Are you sure?') && (localStorage.removeItem('recipes'), location.reload())">Reset</button>
+      </span>
+      <div class="recipes"></div>
+    </div>
+    <div class="items"></div>
+  </main>
+  <footer>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

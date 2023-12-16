@@ -80,8 +80,8 @@ function openWindow(item) {
 
 const isActive = itemName => {
   if (itemName == unknownItem) return 'unknown';
-  if (itemName.getItem().from.length) return 'active';
   if ([furnaceProcess, timeProcess, ashProcess, anyItem, emptyItem].includes(itemName)) return 'special';
+  if (itemName.getItem().from.length) return 'active';
   return 'inactive';
 };
 const toSlot = itemName => `<span class="slot ${isActive(itemName)}" title="${itemName}">${itemName.replace('[', '').replace(']', '')}</span>`;

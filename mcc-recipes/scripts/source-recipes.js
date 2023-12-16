@@ -1,23 +1,24 @@
-// RECIPES
-const unknown = '[???]';
-unknownItem("Ash Cube");
-locationItem(
-  "Spawn",
-  "Red Cube",
-  "Green Cube",
-  "Blue Cube",
-  "White Cube",
-  "Dirt Cube",
-  "Wood Cube",
-  "Rock Cube",
-  "Ice Cube"
-);
+locationItem([
+  ["Red Cube", "Spawn"],
+  ["Green Cube", "Spawn"],
+  ["Blue Cube", "Spawn"],
+  ["White Cube", "Spawn"],
+  ["Dirt Cube", "Spawn"],
+  ["Wood Cube", "Spawn"],
+  ["Rock Cube", "Spawn"],
+  ["Ice Cube", "Spawn"],
 
-locationItem("Underworld", "Pain Cube", "Crimson Cube", "Flesh Cube", "Fire");
+  ["Pain Cube", "Underworld"],
+  ["Crimson Cube", "Underworld"],
+  ["Flesh Cube", "Underworld"],
+  ["Fire", "Underworld"],
 
-locationItem("Magic Island", "Magic Crystal");
+  ["Magic Crystal", "Magic Island"],
+])
 
-lootItem("Guardian Of The Underworld", "Enriched Pyrolite");
+lootItem([
+  ["Enriched Pyrolite", "Guardian Of The Underworld"],
+])
 
 craftItem([
   ["Yellow Cube", "Red Cube", "Green Cube"],
@@ -166,60 +167,46 @@ craftItem([
   ["Impact Cube", "Explosive Cube", "Enrichment Cube"],
   ["Impact Bomb Cube", "Impact Cube", "Bomb Cube"],
 
-  [unknown, "Impact Bomb Cube", "Discombobulated White Cube"],
+  [emptyItem, "Ash Cube", furnaceProcess],
+  ["Glacier Cube", "Permafrost Cube", furnaceProcess],
+  ["Ice Cube", "Glacier Cube", furnaceProcess],
+  ["Water Cube", "Ice Cube", furnaceProcess],
+  ["Steam Cube", "Water Cube", furnaceProcess],
+  ["Plasma Cube", "Steam Cube", furnaceProcess],
+  ["Copper", "Dirt Cube", furnaceProcess],
+  ["Iron", "Dirt Cube", furnaceProcess],
+  ["Gold", "Dirt Cube", furnaceProcess],
+  ["Pyrolite", "Dirt Cube", furnaceProcess],
+  ["Black Cube", "White Cube", furnaceProcess],
+  ["Corruption", "Crimson Cube", furnaceProcess],
+  ["Chromium", "Crimson Cube", furnaceProcess],
+  ["Orb Of Crimson", "Crimson Cube", furnaceProcess],
+  ["Death Cube", "Pain Cube", furnaceProcess],
+  ["Molten Sphere", "Rock Cube", furnaceProcess],
+  ["Molten Sphere", "Copper", furnaceProcess],
+  ["Molten Sphere", "Iron", furnaceProcess],
+  ["Molten Sphere", "Rusted Iron", furnaceProcess],
+  ["Molten Sphere", "Gold", furnaceProcess],
+  ["Molten Sphere", "Pyrolite", furnaceProcess],
+  ["Molten Sphere", "Slightly Oxidised Copper", furnaceProcess],
+  ["Molten Sphere", "Heavily Oxidised Copper", furnaceProcess],
+  ["Molten Sphere", "Copper Cube", furnaceProcess],
+  ["Molten Sphere", "Iron Cube", furnaceProcess],
+  ["Molten Sphere", "Rusted Iron Cube", furnaceProcess],
+  ["Molten Sphere", "Gold Cube", furnaceProcess],
+  ["Molten Sphere", "Pyrolite Cube", furnaceProcess],
+  ["Molten Sphere", "Slightly Oxidised Copper Cube", furnaceProcess],
+  ["Molten Sphere", "Heavily Oxidised Copper Cube", furnaceProcess],
+  ["Molten Sphere", "Corruption", furnaceProcess],
+  ["Molten Sphere", "Corruption Cube", furnaceProcess],
+  ["Molten Sphere", "Chromium", furnaceProcess],
+  ["Molten Sphere", "Chromium Cube", furnaceProcess],
+  ["Power Fragment", "Power Cube", furnaceProcess],
+  ["Concrete Cube", "Wet Concrete Cube", furnaceProcess],
+  ["Gunpowder Cube", "Sand Cube", furnaceProcess],
+
+  ["Slightly Oxidised Copper", "Copper", timeProcess],
+  ["Heavily Oxidised Copper", "Slightly Oxidised Copper", timeProcess],
+  ["Slightly Oxidised Copper Cube", "Copper Cube", timeProcess],
+  ["Heavily Oxidised Copper Cube", "Slightly Oxidised Copper Cube", timeProcess],
 ]);
-
-furnaceItem([
-  ["<No Item>", "Ash Cube"],
-
-  ["Glacier Cube", "Permafrost Cube"],
-  ["Ice Cube", "Glacier Cube"],
-  ["Water Cube", "Ice Cube"],
-  ["Steam Cube", "Water Cube"],
-  ["Plasma Cube", "Steam Cube"],
-
-  ["Copper", "Dirt Cube"],
-  ["Iron", "Dirt Cube"],
-  ["Gold", "Dirt Cube"],
-
-  ["Black Cube", "White Cube"],
-
-  ["Corruption", "Crimson Cube"],
-  ["Chromium", "Crimson Cube"],
-  ["Orb Of Crimson", "Crimson Cube"],
-  ["Death Cube", "Pain Cube"],
-
-  ["Molten Sphere", "Rock Cube"],
-  ["Molten Sphere", "Copper"],
-  ["Molten Sphere", "Iron"],
-  ["Molten Sphere", "Rusted Iron"],
-  ["Molten Sphere", "Gold"],
-  ["Molten Sphere", "Pyrolite"],
-  ["Molten Sphere", "Slightly Oxidised Copper"],
-  ["Molten Sphere", "Heavily Oxidised Copper"],
-  ["Molten Sphere", "Copper Cube"],
-  ["Molten Sphere", "Iron Cube"],
-  ["Molten Sphere", "Rusted Iron Cube"],
-  ["Molten Sphere", "Gold Cube"],
-  ["Molten Sphere", "Pyrolite Cube"],
-  ["Molten Sphere", "Slightly Oxidised Copper Cube"],
-  ["Molten Sphere", "Heavily Oxidised Copper Cube"],
-  ["Molten Sphere", "Corruption"],
-  ["Molten Sphere", "Corruption Cube"],
-  ["Molten Sphere", "Chromium"],
-  ["Molten Sphere", "Chromium Cube"],
-
-  ["Power Fragment", "Power Cube"],
-  ["Concrete Cube", "Wet Concrete Cube"],
-  ["Gunpowder Cube", "Sand Cube"],
-]);
-
-timeItem([
-  ["Slightly Oxidised Copper", "Copper"],
-  ["Heavily Oxidised Copper", "Slightly Oxidised Copper"],
-
-  ["Slightly Oxidised Copper Cube", "Copper Cube"],
-  ["Heavily Oxidised Copper Cube", "Slightly Oxidised Copper Cube"],
-]);
-
-unknownItem();

@@ -46,8 +46,16 @@ option {
   font-size: 18px;
   cursor: pointer;
 }
-option:hover,
-.active {
+option.active {
+  color: white;
+}
+option.inactive, option.unknown {
+  color: #ff0000AA;
+}
+option.special {
+  color: #FFFF00AA;
+}
+option:hover, .optActive {
   background-color: gray;
 }
 
@@ -65,17 +73,45 @@ main {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: solid #4e4e4e 4px;
-  background-color: #171717;
-  width: 50px;
-  height: 50px;
-  margin: 12.5px;
+  border: solid #4e4e4e44 4px;
+  background-color: #17171744;
+  width: 55px;
+  height: 55px;
+  margin: 6px;
   cursor: pointer;
 }
 .slot:hover {
+  border: solid #acacac44 4px;
+  background-color: #4e4e4e44;
+}
+
+.slot.special {
+  border: solid #FFFF0088 4px;
+  background-color: #FFFF0044;
+}
+.slot.special:hover {
+  border: solid #FFFF00FF 4px;
+  background-color: #FFFF00AA;
+}
+
+.slot.active {
+  border: solid #4e4e4e 4px;
+  background-color: #171717;
+}
+.slot.active:hover {
   border: solid #acacac 4px;
   background-color: #4e4e4e;
 }
+
+.slot.inactive {
+  border: solid #ff000088 4px;
+  color: #ff000044;
+}
+.slot.inactive:hover {
+  border: solid #ff0000ff 4px;
+  color: #ff0000aa;
+}
+
 .slot.unknown {
   border: solid #ff000088 4px;
   color: #ff000044;
@@ -141,6 +177,9 @@ main {
 .recipe > .head > .name {
   width: 100%;
   height: 100%;
+  word-break: break-word;
+  overflow: hidden;
+  max-height: 90px;
 }
 .recipe > .head > .name:hover {
   background-color: #cacaca88;
@@ -173,7 +212,7 @@ main {
   justify-content: start;
   align-items: center;
 }
-.recipeData.unknownRecipe {
+.recipeData.noData {
   display: flex;
   align-items: center;
   justify-content: center;

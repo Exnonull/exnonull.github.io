@@ -2,6 +2,7 @@ items.forEach((item) => {
   const opt = document.createElement("option");
   opt.textContent = item.name;
   opt.value = item.name;
+  opt.className = isActive(item.name);
   document.querySelector("#recipes").appendChild(opt);
 });
 input.onclick = function (e) {
@@ -18,10 +19,11 @@ for (let option of recipes.options) {
     recipes.style.display = "none";
     input.style.borderRadius = "5px";
 
-    openRecipe(
+    openWindow(
       option.value.getItem() || {
         name: option.value,
-        recipes: [{ type: "unknown" }],
+        from: [],
+        to: [],
       }
     );
 
@@ -70,10 +72,10 @@ function addActive(x) {
   removeActive(x);
   if (currentFocus >= x.length) currentFocus = 0;
   if (currentFocus < 0) currentFocus = x.length - 1;
-  x[currentFocus].classList.add("active");
+  x[currentFocus].classList.add("optActive");
 }
 function removeActive(x) {
   for (var i = 0; i < x.length; i++) {
-    x[i].classList.remove("active");
+    x[i].classList.remove("optActive");
   }
 }

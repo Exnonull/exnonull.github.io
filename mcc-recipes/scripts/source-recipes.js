@@ -55,6 +55,7 @@ craftItem([
   ["Power Cube", "Cooled Lava Cube", "Plasma Cube"],
   ["Charged Power Cube", "Power Fragment", "Power Cube"],
   ["Super-Charged Power Cube", "Charged Power Cube", "Goldplate Cube"],
+  ["Contained Super-Charged Power Cube", "Power Cube Cage", "Super-Charged Power Cube"],
 
   ["Permafrost Cube", "Glacier Cube", "Glacier Cube"],
   ["Glacier Cube", "Ice Cube", "Water Cube"],
@@ -86,6 +87,7 @@ craftItem([
 
   ["Forge Cube", "Gold Cube", "Iron Cube"],
   ["Plate Cube", "Forge Cube", "Iron Cube"],
+  ["Power Cube Cage", "Plate Cube", "Iron Cube"],
   ["Metalic Cube", "Forge Cube", "Plate Cube"],
   ["Pusher", "Metalic Cube", "Stick"],
   ["Battery Cube", "Plate Cube", "Acid Cube"],
@@ -143,6 +145,9 @@ craftItem([
   ["Fusion Coil", "Speed Coil", "Gravity Coil"],
   ["Enriched Speed Coil", "Speed Coil", "Enriched Red Cube"],
   ["Enriched Gravity Coil", "Gravity Coil", "Enriched Blue Cube"],
+  ["Conveyor Belt", "Speed Coil", "Copper Cube"],
+  ["Alternating Conveyor Belt", "Conveyor Belt", "Purple Cube"],
+
 
   ["Blade", "Forge Cube", "Copper"],
   ["Sword", "Blade", "Wood Cube"],

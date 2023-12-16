@@ -1,4 +1,5 @@
 // RECIPES
+const unknown = '[???]';
 unknownItem("Ash Cube");
 locationItem(
   "Spawn",
@@ -165,7 +166,7 @@ craftItem([
   ["Impact Cube", "Explosive Cube", "Enrichment Cube"],
   ["Impact Bomb Cube", "Impact Cube", "Bomb Cube"],
 
-  ["<???>", "Impact Bomb Cube", "Discombobulated White Cube"],
+  [unknown, "Impact Bomb Cube", "Discombobulated White Cube"],
 ]);
 
 furnaceItem([

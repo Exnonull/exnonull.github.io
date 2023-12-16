@@ -1,6 +1,6 @@
 items.forEach((item) => {
   const opt = document.createElement("option");
-  opt.innerHTML = item.name;
+  opt.textContent = item.name;
   opt.value = item.name;
   document.querySelector("#recipes").appendChild(opt);
 });

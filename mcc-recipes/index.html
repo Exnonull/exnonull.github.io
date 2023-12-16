@@ -91,6 +91,10 @@
         margin: 12.5px;
         cursor: pointer;
       }
+      .slot:hover {
+        border: solid #acacac 4px;
+        background-color: #4e4e4e;
+      }
       .slot.active {
         border: solid #cacaca 4px;
         background-color: #373737;
@@ -162,7 +166,7 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        background-color: #00000044;
+        background-color: #000000AA;
       }
       .recipe > .head > .change {
         background-color: green;
@@ -208,7 +212,7 @@
         align-items: start;
         justify-content: start;
         overflow-y: auto;
-        background-color: #00000022;
+        background-color: #00000088;
       }
       .recipe > .body > .itemRecipe {
         width: 100%;
@@ -834,8 +838,29 @@
             if (el.was) return;
             el.item = el.querySelector('.name').textContent.getItem();
             el.was = true;
+            el.date = +new Date();
+            [...document.querySelectorAll('.recipe')].sort((a,b) => a.date - b.date).forEach((el, i) => {
+              el.style.zIndex = i;
+            });
+
+            el.querySelector('.body').onclick = e => {
+              el.date = +new Date();
+              [...document.querySelectorAll('.recipe')].sort((a,b) => a.date - b.date).forEach((el, i) => {
+                el.style.zIndex = i;
+              });
+            };
+            el.querySelector('.head').onclick = e => {
+              el.date = +new Date();
+              [...document.querySelectorAll('.recipe')].sort((a,b) => a.date - b.date).forEach((el, i) => {
+                el.style.zIndex = i;
+              });
+            };
             el.querySelector('.head').addEventListener(`dragstart`, (e) => {
               e.preventDefault();
+              el.date = +new Date();
+              [...document.querySelectorAll('.recipe')].sort((a,b) => a.date - b.date).forEach((el, i) => {
+                el.style.zIndex = i;
+              });
               el.dx = el.offsetLeft - e.clientX;
               el.dy = el.offsetTop - e.clientY;
               dragging = el;

@@ -295,11 +295,25 @@
       .tooltip:hover .tooltiptext {
         visibility: visible;
       }
+
+      .trello{
+        background-color: #6495ed;
+        color: white;
+        border-radius: 8px;
+        height: 45px;
+        width: 120px;
+        font-size: 18px;
+      }
     </style>
   </head>
 
   <body>
     <header>
+      <div style="position: absolute; top: 30px; left: 30px;">
+        <a href="https://trello.com/b/NRzy3Nyi/modded-cube-combination" target="_blank" onclick="window.open(this.href, '_blank').focus()">
+          <button class="trello">Trello</button>
+        </a>
+      </div>
       <div>
         <input autocomplete="off" id="input" name="recipes" placeholder="Search Recipe" lost="" role="combobox"/>
         <datalist role="listbox" id="recipes"></datalist>

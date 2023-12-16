@@ -38,6 +38,13 @@ craftItem([
   ["White Cube", "Cyan Cube", "Red Cube"],
   ["White Cube", "Yellow Cube", "Blue Cube"],
 
+  ["2 Cube", "White Cube", "Red Cube"],
+  ["4 Cube", "2 Cube", "2 Cube"],
+  ["8 Cube", "4 Cube", "4 Cube"],
+  ["16 Cube", "8 Cube", "8 Cube"],
+  ["32 Cube", "16 Cube", "16 Cube"],
+  ["64 Cube", "32 Cube", "32 Cube"],
+
   ["Pack Cube", "Wood Cube", "Dirt Cube"],
   ["Container Cube", "Pack Cube", "Plate Cube"],
   ["Backpack Cube", "Container Cube", "Wealth Cube"],

@@ -12,13 +12,13 @@ const recipeTo = (result, {type, sources}) => ({result, type, sources});
 const items = [
   {
     name: emptyItem,
-    from: [{type: 'craft', sources: ['Ash Cube', furnaceProcess]}],
+    from: [],
     to: [],
   },
   {
     name: 'Ash Cube',
     from: [],
-    to: [{result: emptyItem, type: 'craft', sources: ['Ash Cube', furnaceProcess]}],
+    to: [],
   },
 ];
 

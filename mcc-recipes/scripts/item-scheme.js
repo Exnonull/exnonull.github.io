@@ -140,12 +140,16 @@ function craftItem(recipes) {
 }
 
 function itemCombinations(recipes) {
-  recipes.forEach(([name, ...sources]) =>
+  recipes.forEach(([name, ...sources]) => {
+    if (sources.length == 0) {
+      if (!name.getItem()) makeItem(name);
+      name.getItem().noResult = true;
+    }
     sources.forEach(s => 
       newRecipeTo({
         type: "craft",
         sources: [name, s],
       })
     )
-  );
+  });
 }

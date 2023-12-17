@@ -85,6 +85,7 @@ const isActive = itemName => {
   return 'inactive';
 };
 const toSlot = itemName => `<span class="slot ${isActive(itemName)}" title="${itemName}">${itemName.replace('[', '').replace(']', '')}</span>`;
+const noRecipeText = win => win.item.noResult ? '[No Combinations]' : '[No Data]';
 function changeRecipe(win) {
   win.view = !win.view;
   if (win.view) {
@@ -140,7 +141,7 @@ function changeRecipe(win) {
   }
 
   if (!win.querySelector(".body").innerHTML.trim().length)
-    win.querySelector(".body").innerHTML = `<div class="itemRecipe"><div class="recipeData noData">[No Data]</div></div>`;
+    win.querySelector(".body").innerHTML = `<div class="itemRecipe"><div class="recipeData noData">${noRecipeText(win)}</div></div>`;
   
   [...win.querySelectorAll(".slot")].forEach((i) => {
     i.style.fontSize = getFontSize(i.textContent.length);

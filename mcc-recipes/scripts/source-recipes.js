@@ -213,6 +213,7 @@ craftItem([
 
   ["Concrete Barricade", "Concrete Cube", "Iron Cube"],
   ["Stone Barricade", "Rock Cube", "Iron Cube"],
+  ["Grindstone", "Stone Barricade", "Wood Cube"],
   ["Wooden Barricade", "Wood Cube", "Iron Cube"],
   ["Metal Barricade", "Copper Cube", "Iron Cube"],
   ["Metal Wall", "Metal Barricade", "Plate Cube"],

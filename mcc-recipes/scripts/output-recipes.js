@@ -132,6 +132,7 @@ itemCombinations([
     ["Heavy Spiked Iron Shield",],
     ["Max Health Decreaser",],
     ["Cruelty Cube",],
+    ["Grindstone",],
     ["Fiery Greatsword",],
     ["Activated Gilded Great Hammer",],
     ["Portable Disposer",],

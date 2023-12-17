@@ -14,6 +14,9 @@ locationItem([
   ["Fire", "Underworld"],
 
   ["Magic Crystal", "Magic Island"],
+  ["Compressor", "Compressor Island"],
+  ["Furnace", "Spawn"],
+  ["Time", "Everywhere"],
 ])
 
 lootItem([
@@ -50,6 +53,17 @@ lootItem([
 ])
 
 craftItem([
+  ["Plate Cube", "Goldplate Cube", compressorProcess],
+  ["Forge Cube", "Plate Cube", compressorProcess],
+  ["Gold Cube", "Forge Cube", compressorProcess],
+  ["White Cube", "Gold Cube", compressorProcess],
+  ["Red Cube", "White Cube", compressorProcess],
+  [emptyItem, "Red Cube", compressorProcess],
+  ["Wealth Cube", "Ally Cube", compressorProcess],
+  ["Forge Cube", "Wealth Cube", compressorProcess],
+  ["Gold", "Gold Cube", compressorProcess],
+  [emptyItem, "Gold", compressorProcess],
+
   ["Yellow Cube", "Red Cube", "Green Cube"],
   ["Orange Cube", "Yellow Cube", "Red Cube"],
   ["Lime Cube", "Yellow Cube", "Green Cube"],

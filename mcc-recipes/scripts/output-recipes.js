@@ -75,6 +75,8 @@ itemCombinations([
     ["Double Engine Cylinder", "Double Engine Cylinder",],
     ["Spiked Cube", "Iron Chestplate", "Heavy Iron Shield", "Iron Leggings", "Iron Helmet", "Iron Shield", "Iron Boots",],
     ["Quad Engine Cylinder", "Engine Piston",],
+    ["Engine Piston", "Quad Engine Cylinder",],
+    ["Chromium Ring", "Enlarged Engine",],
     ["Flame Sword", "Golden Sword", "Permafrost Sword"],
     ["Gravity Coil", "Speed Coil", "Enriched Blue Cube",],
     ["Armor Cube", "Blue Cube", "Iron Cube", "Red Cube", "Yellow Cube", "Wood Cube", "Magenta Cube",],

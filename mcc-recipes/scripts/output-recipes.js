@@ -102,6 +102,7 @@ itemCombinations([
     ["Enriched Black Cube", "Golden Spear", "Golden Longsword", "Sword", "Golden Dagger", "Metal Wall", "Golden Greatsword",],
     ["Metal Wall", "Green Cube", "Enriched Black Cube", "Red Cube", "Steel Cube", "Blue Cube",],
     ["Metal Wall", "Green Cube", "Enriched Black Cube", "Red Cube", "Steel Cube", "Blue Cube",],
+    ["Teal Cube", "Filter Conveyor Belt",],
 
     ["2 Cube", "2 Cube",],
     ["4 Cube", "4 Cube",],
@@ -132,4 +133,5 @@ itemCombinations([
     ["Fiery Greatsword",],
     ["Activated Gilded Great Hammer",],
     ["Portable Disposer",],
+    ["Inverted Filter Conveyor Belt",],
 ]);

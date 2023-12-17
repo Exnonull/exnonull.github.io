@@ -58,6 +58,7 @@ craftItem([
   ["Purple Cube", "Magenta Cube", "Blue Cube"],
 
   ["Cyan Cube", "Green Cube", "Blue Cube"],
+  ["Teal Cube", "Cyan Cube", "Green Cube"],
   ["Caltrop", "Cyan Cube", "Copper"],
   ["Flaming Caltrop", "Caltrop", "Lava Cube"],
   ["Glacier Caltrop", "Caltrop", "Glacier Cube"],
@@ -216,6 +217,7 @@ craftItem([
   ["Ramp Conveyor Belt", "Conveyor Belt", "Blue Cube"],
   ["Fast Conveyor Belt", "Conveyor Belt", "Enriched Red Cube"],
   ["Filter Conveyor Belt", "Conveyor Belt", "Chromium Cube"],
+  ["Inverted Filter Conveyor Belt", "Filter Conveyor Belt", "Teal Cube"],
   ["Alternating Conveyor Belt", "Conveyor Belt", "Purple Cube"],
   ["Sledgehammer", "Stick", "Plate Cube",],
   ["Bridger", "Wood Cube", "Plate Cube",],

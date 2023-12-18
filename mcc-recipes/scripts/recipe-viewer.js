@@ -80,7 +80,7 @@ function openWindow(item) {
 
 const isActive = itemName => {
   if (itemName == unknownItem) return 'unknown';
-  if ([furnaceProcess, timeProcess, ashProcess, anyItem, emptyItem, compressorProcess].includes(itemName)) return 'special';
+  if ([furnaceProcess, timeProcess, ashProcess, anyItem, emptyItem, compressorProcess, acceleratorProcess].includes(itemName)) return 'special';
   if (itemName.getItem().from.length) return 'active';
   return 'inactive';
 };

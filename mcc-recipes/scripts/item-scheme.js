@@ -6,6 +6,7 @@ const timeProcess = '[Time]';
 const furnaceProcess = '[Furnace]';
 const ashProcess = '[Ash Sifter]';
 const compressorProcess = '[Compressor]';
+const acceleratorProcess = '[Accelerator]'; // preons
 
 const recipeFrom = ({type, sources}) => ({type, sources});
 const recipeTo = (result, {type, sources}) => ({result, type, sources});

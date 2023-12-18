@@ -64,6 +64,14 @@ craftItem([
   // ["Gold", "Gold Cube", compressorProcess],
   // [emptyItem, "Gold", compressorProcess],
 
+  ["Quarks", "Preons", "Preons"], // any with acceleratorProcess
+  ["Nucleus", "Quarks", "Quarks"],
+  ["Matter", "Nucleus", "Nucleus"],
+  ["Discombobulated White Cube", "Matter", "Matter"],
+  ["Preons", "Destroyed Particles", compressorProcess], // preons + compressor = empty
+  ["Destroyed Particles", "Preons", acceleratorProcess],
+  ["Destroyed Particles", "Destroyed Particles", acceleratorProcess],
+
   ["Yellow Cube", "Red Cube", "Green Cube"],
   ["Orange Cube", "Yellow Cube", "Red Cube"],
   ["Lime Cube", "Yellow Cube", "Green Cube"],

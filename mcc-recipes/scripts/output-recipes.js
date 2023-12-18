@@ -1,5 +1,6 @@
 itemCombinations([
     ["Impact Bomb Cube", "Discombobulated White Cube",],
+    ["Discombobulated White Cube", "Impact Bomb Cube", "Storage Cube",],
     ["Magenta Cube", "Green Cube", "Blue Cube", "Grass Cube", "Armor Cube",],
     ["Green Cube", "Wooden Wall", "Wealth Cube", "Plate Cube", "Mud Cube", "Soil Cube", "Metal Wall", "Blue Cube", "Stone Wall", "Red Cube", "Concrete Wall", "Yellow Cube", "Hyper Fragment", "Magenta Cube",],
     ["Cyan Cube", "Copper", "Red Cube", "Air Cube",],
@@ -105,6 +106,11 @@ itemCombinations([
     ["Metal Wall", "Green Cube", "Enriched Black Cube", "Red Cube", "Steel Cube", "Blue Cube",],
     ["Metal Wall", "Green Cube", "Enriched Black Cube", "Red Cube", "Steel Cube", "Blue Cube",],
     ["Teal Cube", "Filter Conveyor Belt",],
+    ["Quarks", "Quarks",],
+    ["Nucleus", "Nucleus",],
+    ["Matter", "Matter",],
+    ["Preons", acceleratorProcess, "Preons",],
+    ["Destroyed Particles", compressorProcess,],
 
     ["2 Cube", "2 Cube",],
     ["4 Cube", "4 Cube",],
@@ -113,6 +119,7 @@ itemCombinations([
     ["32 Cube", "32 Cube",],
     ["64 Cube", "64 Cube",],
 
+    ["Destroyed Particles",],
     ["Mechanical Glove",],
     ["Clock",],
     ["Great Longsword",],

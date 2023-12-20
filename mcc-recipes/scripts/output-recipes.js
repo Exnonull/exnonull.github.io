@@ -1,6 +1,6 @@
 itemCombinations([
-    ["Impact Bomb Cube", "Discombobulated White Cube",],
-    ["Discombobulated White Cube", "Impact Bomb Cube", "Storage Cube",],
+    ["Impact Bomb", "Discombobulated White Cube",],
+    ["Discombobulated White Cube", "Impact Bomb", "Storage Cube",],
     ["Magenta Cube", "Green Cube", "Blue Cube", "Grass Cube", "Armor Cube",],
     ["Green Cube", "Wooden Wall", "Wealth Cube", "Plate Cube", "Mud Cube", "Soil Cube", "Metal Wall", "Blue Cube", "Stone Wall", "Red Cube", "Concrete Wall", "Yellow Cube", "Hyper Fragment", "Magenta Cube",],
     ["Cyan Cube", "Copper", "Red Cube", "Air Cube",],
@@ -19,6 +19,8 @@ itemCombinations([
     ["Power Cube Cage", "Super-Charged Power Cube",],
     ["Contained Super-Charged Power Cube", "Entity Infuser",],
     ["Pack Cube", "Plate Cube",],
+    ["Steel", "White Cube",],
+    ["Steel Cube", "Iron Chestplate", "Wealth Cube", "Iron Leggings", "Concrete Door Wall", "Backpack Cube", "Metal Wall", "Iron Helmet", "Iron Boots",],
     ["Spike", "Iron", "Plate Cube", "Club",],
     ["Glacier Club", "Cryoide Cube",],
     ["Frozen Club", "Glacier Cube",],
@@ -45,7 +47,7 @@ itemCombinations([
     ["Permafrost Cube", furnaceProcess, "Frost Spear", "Frozen Greatsword", "Cryoide Dust", "Frost Sword",],
     ["Glacier Cube", furnaceProcess, "Ice Spear", "Ice Sword", "Frost Greatsword", "Ice Longsword", "Ice Dagger", "Lava Cube", "Frozen Club", "Glacier Cube", "Caltrop",],
     ["Ice Cube", furnaceProcess, "Water Cube", "Golden Longsword", "Golden Dagger", "Golden Sword", "Golden Spear", "Iron Club", "Golden Greatsword",],
-    ["Water Cube", furnaceProcess, ashProcess, "Sand Cube", "Dirt Cube", "Ice Cube", "Plasma Cube",],
+    ["Water Cube", furnaceProcess, "Sand Cube", "Dirt Cube", "Ice Cube", "Plasma Cube",], // ashProcess
     ["Steam Cube", furnaceProcess, "Iron Cube", "White Cube", "Rock Cube", "Iron",],
     ["Plasma Cube", "Water Cube", "Lava Cube", "Cooled Lava Cube",],
     ["Pyrolite", "White Cube", "Dagger", "Enricher",],
@@ -119,6 +121,7 @@ itemCombinations([
     ["32 Cube", "32 Cube",],
     ["64 Cube", "64 Cube",],
 
+    ["Vault",],
     ["Destroyed Particles",],
     ["Mechanical Glove",],
     ["Clock",],

@@ -84,6 +84,10 @@ const isActive = itemName => {
   if (itemName.getItem().from.length) return 'active';
   return 'inactive';
 };
+const ashWater = itemName => {
+  if (itemName != "Water Cube") return '';
+  return `<div class="waterLine"></div>`;
+};
 const toSlot = itemName => `<span class="slot ${isActive(itemName)}" title="${itemName}">${itemName.replace('[', '').replace(']', '')}</span>`;
 const noRecipeText = win => win.item.noResult ? '[No Combinations]' : '[No Data]';
 function changeRecipe(win) {
@@ -100,6 +104,16 @@ function changeRecipe(win) {
             <span class="sign">=</span>
             ${toSlot(r.sources[0])}
             <span class="sign">+</span>
+            ${toSlot(r.sources[1])}
+        </div>`;
+
+        if (r.type == "ash")
+          rec = `<div class="recipeData">
+            ${toSlot(r.result)}
+            <span class="sign">=</span>
+            ${toSlot(r.sources[0])}
+            <span class="sign">+</span>
+            ${ashWater(r.sources[2])}
             ${toSlot(r.sources[1])}
         </div>`;
 
@@ -132,6 +146,16 @@ function changeRecipe(win) {
             <span class="sign">:</span>
             ${toSlot(r.sources[0])}
             <span class="sign">+</span>
+            ${toSlot(r.sources[1])}
+        </div>`;
+
+        if (r.type == "ash")
+          rec = `<div class="recipeData">
+            <span class="recipeType craft">Ash Sifter</span>
+            <span class="sign">:</span>
+            ${toSlot(r.sources[0])}
+            <span class="sign">+</span>
+            ${ashWater(r.sources[2])}
             ${toSlot(r.sources[1])}
         </div>`;
 

@@ -7,6 +7,18 @@ const furnaceProcess = '[Furnace]';
 const ashProcess = '[Ash Sifter]';
 const compressorProcess = '[Compressor]';
 const acceleratorProcess = '[Accelerator]'; // preons
+const entityInfusor = '[Entity Infusor]';
+const doNotLink = [
+  unknownItem,
+  emptyItem,
+  anyItem,
+  timeProcess,
+  furnaceProcess,
+  ashProcess,
+  compressorProcess,
+  acceleratorProcess,
+  entityInfusor,
+];
 
 const recipeFrom = ({type, sources}) => ({type, sources});
 const recipeTo = (result, {type, sources}) => ({result, type, sources});
@@ -62,17 +74,9 @@ function makeItem(itemName) {
   return item;
 }
 
-function newRecipeFrom(itemName, recipe) {
-  let item = makeItem(itemName);
-  if (!itemName.hasRecipeFrom(recipe)) item.from.push(recipe);
-
-  if (recipe.type == "craft")
-    recipe.sources.forEach((otherName) => {
-      let item = makeItem(otherName);
-      item.to.push({ ...recipe, result: itemName });
-    });
-
-  if (itemName == emptyItem) return;
+function linkAsh(itemName) {
+  makeItem(ashProcess);
+  makeItem("Ash Cube");
 
   let fromFurnace = itemName.getItemProcess(furnaceProcess);
   if (fromFurnace) { // itemName <- item + furnace => remove item
@@ -89,8 +93,54 @@ function newRecipeFrom(itemName, recipe) {
   }
 
   if (fromFurnace || toFurnace) return;
-  if ("Ash Cube".hasRecipeFrom(itemName)) return;
-  "Ash Cube".getItem().from.push({ type: "craft", sources: [itemName, furnaceProcess] });
+  const recipe = { type: "craft", sources: [itemName, furnaceProcess] };
+  if ("Ash Cube".hasRecipeFrom(recipe)) return;
+  "Ash Cube".getItem().from.push(recipe);
+}
+
+function linkCompressor(itemName, recipe) {
+  makeItem(compressorProcess);
+  if (recipe.type != 'craft') return;
+  recipe.sources.forEach((otherName) => {
+    makeItem(otherName);
+    compressorProcess.getItem().to.push({ type: "craft", sources: [itemName, compressorProcess], result: otherName });
+  });
+}
+
+function linkAccelerator(itemName) {
+  makeItem(acceleratorProcess);
+  makeItem("Preons");
+  makeItem("Destroyed Particles");
+  if (itemName == "Destroyed Particles") return;
+
+  const recipe = { type: "craft", sources: [itemName, acceleratorProcess] };
+  if ("Preons".hasRecipeFrom(recipe)) return;
+  "Preons".getItem().from.push({ type: "craft", sources: [itemName, acceleratorProcess] });
+}
+
+function newRecipeFrom(itemName, recipe) {
+  let item = makeItem(itemName);
+  if (!itemName.hasRecipeFrom(recipe)) item.from.push(recipe);
+
+  if (recipe.type == "craft")
+    recipe.sources.forEach((otherName) => {
+      let item = makeItem(otherName);
+      if (!otherName.hasRecipeTo(recipe))
+        item.to.push({ ...recipe, result: itemName });
+    });
+
+  if (recipe.type == "ash")
+    recipe.sources.forEach((otherName) => {
+      let item = makeItem(otherName);
+      item.to.push({ ...recipe, result: itemName });
+    });
+
+  if (itemName == emptyItem && recipe.type != 'ash') return;
+  if (doNotLink.includes(itemName)) return;
+
+  linkAsh(itemName);
+  linkCompressor(itemName, recipe);
+  linkAccelerator(itemName);
 }
 
 function newRecipeTo(recipe) {
@@ -137,6 +187,15 @@ function craftItem(recipes) {
     newRecipeFrom(name, {
       type: "craft",
       sources: [sourceA, sourceB],
+    })
+  );
+}
+
+function ashItem(recipes) {
+  recipes.forEach(([name, sourceA, sourceB, sourceC]) =>
+    newRecipeFrom(name, {
+      type: "ash",
+      sources: [sourceA, sourceB, sourceC].filter(i => i),
     })
   );
 }

@@ -84,6 +84,12 @@ main {
   border: solid #acacac44 4px;
   background-color: #4e4e4e44;
 }
+.waterLine {
+  background-color: #0088FFAA;
+  width: 4px;
+  height: 63px;
+  margin-left: 5px;
+}
 
 .slot.special {
   border: solid #FFFF0088 4px;
@@ -134,7 +140,6 @@ main {
   justify-content: center;
   position: absolute;
   width: 275px;
-  height: 275px;
   font-size: 24px;
   text-align: center;
 
@@ -145,7 +150,7 @@ main {
 
 .recipe > .head {
   cursor: pointer;
-  font-size: 36px;
+  font-size: 24px;
 
   display: flex;
   justify-content: space-between;
@@ -194,6 +199,7 @@ main {
 .recipe > .body {
   width: 100%;
   flex: 1;
+  max-height: 300px;
   display: flex;
   flex-direction: column;
   align-items: start;

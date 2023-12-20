@@ -1,4 +1,8 @@
 locationItem([
+  [compressorProcess, "Compressor Island"],
+  [furnaceProcess, "Spawn"],
+  [timeProcess, "Everywhere"],
+
   ["Red Cube", "Spawn"],
   ["Green Cube", "Spawn"],
   ["Blue Cube", "Spawn"],
@@ -14,12 +18,11 @@ locationItem([
   ["Fire", "Underworld"],
 
   ["Magic Crystal", "Magic Island"],
-  ["Compressor", "Compressor Island"],
-  ["Furnace", "Spawn"],
-  ["Time", "Everywhere"],
-])
+]);
 
 lootItem([
+  ["Contained Super-Charged Power Cube", "Charged Tank",],
+  ["Steel", "Charged Tank",],
   ["Enriched Pyrolite", "Guardian Of The Underworld"],
   ["Fiery Greatsword", "Guardian Of The Underworld"],
   ["Iron Greatsword", "Raider Brute"],
@@ -53,25 +56,6 @@ lootItem([
 ])
 
 craftItem([
-  // ["Plate Cube", "Goldplate Cube", compressorProcess],
-  // ["Forge Cube", "Plate Cube", compressorProcess],
-  // ["Gold Cube", "Forge Cube", compressorProcess],
-  // ["White Cube", "Gold Cube", compressorProcess],
-  // ["Red Cube", "White Cube", compressorProcess],
-  // [emptyItem, "Red Cube", compressorProcess],
-  // ["Wealth Cube", "Ally Cube", compressorProcess],
-  // ["Forge Cube", "Wealth Cube", compressorProcess],
-  // ["Gold", "Gold Cube", compressorProcess],
-  // [emptyItem, "Gold", compressorProcess],
-
-  ["Quarks", "Preons", "Preons"], // any with acceleratorProcess
-  ["Nucleus", "Quarks", "Quarks"],
-  ["Matter", "Nucleus", "Nucleus"],
-  ["Discombobulated White Cube", "Matter", "Matter"],
-  ["Preons", "Destroyed Particles", compressorProcess], // preons + compressor = empty
-  ["Destroyed Particles", "Preons", acceleratorProcess],
-  ["Destroyed Particles", "Destroyed Particles", acceleratorProcess],
-
   ["Yellow Cube", "Red Cube", "Green Cube"],
   ["Orange Cube", "Yellow Cube", "Red Cube"],
   ["Lime Cube", "Yellow Cube", "Green Cube"],
@@ -193,12 +177,15 @@ craftItem([
   ["Enriched Yellow Cube", "Enriched Red Cube", "Enriched Green Cube"],
   ["Enriched White Cube", "Enriched Yellow Cube", "Enriched Blue Cube"],
   ["Enriched White Cube", "Enriched Magenta Cube", "Enriched Green Cube"],
-  ["Enriched Black Cube", "Enriched White Cube", furnaceProcess],
 
   ["Spiked Cube", "Spike", "Plate Cube"],
   ["Engine Cylinder", "Spike", "Iron"],
   ["Double Engine Cylinder", "Engine Cylinder", "Engine Cylinder"],
   ["Quad Engine Cylinder", "Double Engine Cylinder", "Double Engine Cylinder"],
+
+  ["Steel Cube", "White Cube", "Steel"],
+  ["Clock", "Wealth Cube", "Steel Cube"],
+  ["Vault", "Concrete Door Wall", "Steel Cube"],
 
   ["Spiked Iron Shield", "Spiked Cube", "Iron Shield"],
   ["Heavy Spiked Iron Shield", "Heavy Iron Shield", "Spiked Cube"],
@@ -283,8 +270,16 @@ craftItem([
   ["Explosive Cube", "Throwable Cube", "Gunpowder Cube"],
   ["Bomb Cube", "Explosive Cube", "Lava Cube"],
   ["Impact Cube", "Explosive Cube", "Enrichment Cube"],
-  ["Impact Bomb Cube", "Impact Cube", "Bomb Cube"],
 
+  ["Quarks", "Preons", "Preons"],
+  ["Nucleus", "Quarks", "Quarks"],
+  ["Matter", "Nucleus", "Nucleus"],
+  ["Discombobulated White Cube", "Matter", "Matter"],
+  ["Preons", "Destroyed Particles", compressorProcess],
+  ["Destroyed Particles", "Preons", acceleratorProcess],
+  ["Destroyed Particles", "Destroyed Particles", acceleratorProcess],
+
+  ["Enriched Black Cube", "Enriched White Cube", furnaceProcess],
   [emptyItem, "Ash Cube", furnaceProcess],
   ["Dirt Cube", "Mud Cube", furnaceProcess],
   ["Glacier Cube", "Permafrost Cube", furnaceProcess],
@@ -326,10 +321,12 @@ craftItem([
   ["Heavily Oxidised Copper", "Slightly Oxidised Copper", timeProcess],
   ["Slightly Oxidised Copper Cube", "Copper Cube", timeProcess],
   ["Heavily Oxidised Copper Cube", "Slightly Oxidised Copper Cube", timeProcess],
+]);
 
-  ["Mud Cube", "Ash Cube", ashProcess], // requires Water Cube
-  ["Sand Cube", "Ash Cube", ashProcess], // requires Water Cube
-  ["Forge Cube", "Ash Cube", ashProcess], // requires Water Cube
+ashItem([
+  ["Mud Cube", "Ash Cube", ashProcess, "Water Cube"],
+  ["Sand Cube", "Ash Cube", ashProcess, "Water Cube"],
+  ["Forge Cube", "Ash Cube", ashProcess, "Water Cube"],
 
   ["Dirt Cube", "Ash Cube", ashProcess],
   ["Rock Cube", "Ash Cube", ashProcess],

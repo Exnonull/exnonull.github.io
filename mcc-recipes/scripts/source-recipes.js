@@ -17,7 +17,7 @@ locationItem([
   ["Flesh Cube", "Underworld"],
   ["Fire", "Underworld"],
 
-  ["Magic Crystal", "Magic Island"],
+  ["Magic Crystal", "Enchanter Island"],
 ]);
 
 lootItem([

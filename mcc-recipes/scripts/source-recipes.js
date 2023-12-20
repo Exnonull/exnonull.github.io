@@ -23,9 +23,14 @@ locationItem([
 lootItem([
   ["Contained Super-Charged Power Cube", "Charged Tank",],
   ["Steel", "Charged Tank",],
+
   ["Enriched Pyrolite", "Guardian Of The Underworld"],
   ["Fiery Greatsword", "Guardian Of The Underworld"],
+
   ["Iron Greatsword", "Raider Brute"],
+
+  ["Mage Staff", "White Beard"],
+  ["Enchant Token", "White Beard"],
 
   ["Great Hammer Head", "Hammerdom"],
   ["Hammerdom Helmet", "Hammerdom"],
@@ -34,6 +39,7 @@ lootItem([
   ["Great Longsword", "Ravenscar"],
   ["Clock", "Ravenscar"],
   ["Clock", "Ravenscar"],
+  
   ["Longsword", "Longsworded Rider"],
   ["Light Cube", "Longsworded Rider"],
 

@@ -6,6 +6,7 @@ const timeProcess = '[Time]';
 const furnaceProcess = '[Furnace]';
 const ashProcess = '[Ash Sifter]';
 const compressorProcess = '[Compressor]';
+const enchantProcess = '[Enchantment Table]';
 const acceleratorProcess = '[Accelerator]'; // preons
 const entityInfusor = '[Entity Infusor]';
 const doNotLink = [
@@ -17,6 +18,7 @@ const doNotLink = [
   ashProcess,
   compressorProcess,
   acceleratorProcess,
+  enchantProcess,
   entityInfusor,
 ];
 

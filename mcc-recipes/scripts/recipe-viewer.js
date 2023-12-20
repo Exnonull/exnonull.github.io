@@ -38,6 +38,16 @@ function openWindow(item) {
     win.date = +new Date();
     sortWindows();
   };
+  win.querySelector(".head").addEventListener(`touchstart`, (e) => {
+    win.date = +new Date();
+    sortWindows();
+
+    win.dx = win.offsetLeft - e.touches[0].pageX;
+    win.dy = win.offsetTop - e.touches[0].pageY;
+    dragging = win;
+
+    return false;
+  });
   win.querySelector(".head").addEventListener(`dragstart`, (e) => {
     win.date = +new Date();
     sortWindows();
@@ -194,6 +204,17 @@ document.onmousemove = function (e) {
   dragging.style.left = e.clientX + dragging.dx + "px";
   dragging.style.top = e.clientY + dragging.dy + "px";
 };
+document.ontouchmove = function (e) {
+  if (!dragging) return;
+  dragging.style.left = e.touches[0].pageX + dragging.dx + "px";
+  dragging.style.top = e.touches[0].pageY + dragging.dy + "px";
+};
 document.onmouseup = function (e) {
+  dragging = null;
+};
+document.ontouchcancel = function (e) {
+  dragging = null;
+};
+document.ontouchend = function (e) {
   dragging = null;
 };

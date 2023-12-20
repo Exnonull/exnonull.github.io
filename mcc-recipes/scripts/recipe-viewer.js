@@ -100,21 +100,21 @@ function changeRecipe(win) {
 
         if (r.type == "craft")
           rec = `<div class="recipeData">
-            ${toSlot(r.result)}
-            <span class="sign">=</span>
-            ${toSlot(r.sources[0])}
-            <span class="sign">+</span>
             ${toSlot(r.sources[1])}
+            <span class="sign">+</span>
+            ${toSlot(r.sources[0])}
+            <span class="sign">=</span>
+            ${toSlot(r.result)}
         </div>`;
 
         if (r.type == "ash")
           rec = `<div class="recipeData">
-            ${toSlot(r.result)}
-            <span class="sign">=</span>
-            ${toSlot(r.sources[0])}
-            <span class="sign">+</span>
             ${ashWater(r.sources[2])}
             ${toSlot(r.sources[1])}
+            <span class="sign">+</span>
+            ${toSlot(r.sources[0])}
+            <span class="sign">=</span>
+            ${toSlot(r.result)}
         </div>`;
 
         return `<div class="itemRecipe">${rec}</div>`;
@@ -144,19 +144,19 @@ function changeRecipe(win) {
           rec = `<div class="recipeData">
             <span class="recipeType craft">Craft</span>
             <span class="sign">:</span>
-            ${toSlot(r.sources[0])}
-            <span class="sign">+</span>
             ${toSlot(r.sources[1])}
+            <span class="sign">+</span>
+            ${toSlot(r.sources[0])}
         </div>`;
 
         if (r.type == "ash")
           rec = `<div class="recipeData">
             <span class="recipeType craft">Ash Sifter</span>
             <span class="sign">:</span>
-            ${toSlot(r.sources[0])}
-            <span class="sign">+</span>
             ${ashWater(r.sources[2])}
             ${toSlot(r.sources[1])}
+            <span class="sign">+</span>
+            ${toSlot(r.sources[0])}
         </div>`;
 
         return `<div class="itemRecipe">${rec}</div>`;

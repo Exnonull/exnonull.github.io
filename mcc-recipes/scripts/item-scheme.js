@@ -214,3 +214,58 @@ function itemCombinations(recipes) {
     )
   });
 }
+
+// https://stackoverflow.com/a/34810528/17592157
+function getSort(caseInsensitive) {
+  caseInsensitive = !!caseInsensitive;
+  // Splits a string in to string and number fragments, parsing integers along the way.
+  function getFragments(string) {
+      var strings = string.split(/\d/);
+      var numbers = string.split(/\D/);
+      if (caseInsensitive === true) {
+          strings = strings.map(function(string) {
+              return string.toLowerCase();
+          });
+      }
+      // Remove any empty strings (there's likely to be one at the start or at the end).
+      var fragments = strings.filter(function(value) {
+          return value.length > 0;
+      });
+      var insertIndex = 0;
+      // Insert numbers in the correct place in the fragments array.
+      for (var i = 0; i < numbers.length; i++) {
+          if (numbers[i].length > 0) {
+              fragments.splice(insertIndex, 0, parseInt(numbers[i]));
+              // Add one to insert index to account for the element we just added.
+              insertIndex++;
+          }
+          insertIndex++;
+      }
+      return fragments;
+  }
+
+  // Actual comparison function.
+  return function(lhs, rhs) {
+      var lhsFragments = getFragments(lhs);
+      var rhsFragments = getFragments(rhs);
+
+      for (var i = 0; i < lhsFragments.length; i++) {
+          // Sort right-hand-side in front of left-hand-side if left-hand-side has more fragments.
+          if (i >= rhsFragments.length) {
+              return 1;
+          }
+          if (lhsFragments[i] !== rhsFragments[i]) {
+              if (lhsFragments[i] < rhsFragments[i]) {
+                  return -1;
+              } else {
+                  return 1;
+              }
+          }
+      }
+      // Sort left-hand-side in front of right-hand-side if right-hand-side has more fragments.
+      if (lhsFragments.length < rhsFragments.length) {
+          return -1;
+      }
+      return 0;
+  }
+}

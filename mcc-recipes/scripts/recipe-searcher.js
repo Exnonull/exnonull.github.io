@@ -1,11 +1,11 @@
 items.sort((a, b) => {
   if (doNotLink.includes(a.name)) return 1;
   if (doNotLink.includes(b.name)) return -1;
-  
+
   if (!a.from.length) return 1;
   if (!b.from.length) return -1;
 
-  if ([a.name,b.name].sort()[0] == a.name) return -1;
+  if ([a.name,b.name].sort(getSort())[0] == a.name) return -1;
   return 1;
 }).forEach((item) => {
   const opt = document.createElement("option");

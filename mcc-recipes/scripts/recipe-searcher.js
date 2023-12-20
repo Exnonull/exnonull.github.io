@@ -52,7 +52,7 @@ input.oninput = function () {
   currentFocus = -1;
   var text = input.value.toUpperCase();
   for (let option of recipes.options) {
-    if (option.value.toUpperCase().indexOf(text) > -1) {
+    if (option.value.toUpperCase().indexOf(text) > -1 || text.trim().length == 0) {
       option.style.display = "block";
     } else {
       option.style.display = "none";

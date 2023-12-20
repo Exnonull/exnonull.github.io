@@ -38,6 +38,10 @@ function openWindow(item) {
     win.date = +new Date();
     sortWindows();
   };
+  win.ontouchstart = (e) => {
+    win.date = +new Date();
+    sortWindows();
+  };
   win.querySelector(".head").addEventListener(`touchstart`, (e) => {
     win.date = +new Date();
     sortWindows();
@@ -46,7 +50,8 @@ function openWindow(item) {
     win.dy = win.offsetTop - e.touches[0].pageY;
     dragging = win;
 
-    return false;
+    e.preventDefault();
+    e.stopPropagation();
   });
   win.querySelector(".head").addEventListener(`dragstart`, (e) => {
     win.date = +new Date();
@@ -57,6 +62,7 @@ function openWindow(item) {
     dragging = win;
 
     e.preventDefault();
+    e.stopPropagation();
     return false;
   });
   win.querySelector(".head").addEventListener(`dragover`, (e) => {
@@ -64,8 +70,13 @@ function openWindow(item) {
     dragging = null;
     return false;
   });
+  win.querySelector(".change").ontouchstart = (e) => changeRecipe(win);
   win.querySelector(".change").onclick = (e) => changeRecipe(win);
   win.querySelector(".close").onclick = (e) => win.remove();
+  [...win.querySelectorAll(".slot")].forEach((i) => {
+    i.style.fontSize = getFontSize(i.textContent.length);
+  });
+  win.querySelector(".close").ontouchstart = (e) => win.remove();
   [...win.querySelectorAll(".slot")].forEach((i) => {
     i.style.fontSize = getFontSize(i.textContent.length);
   });

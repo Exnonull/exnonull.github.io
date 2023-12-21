@@ -29,6 +29,7 @@ lootItem([
   ["Fiery Greatsword", "Guardian Of The Underworld"],
 
   ["Iron Greatsword", "Raider Brute"],
+  ["Raider Brute Helmet", "Raider Brute"],
 
   ["Mage Staff", "White Beard"],
   ["Enchant Token", "White Beard"],

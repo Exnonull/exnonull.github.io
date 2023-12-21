@@ -187,14 +187,16 @@ const toSlot = (itemName, className) => itemName === null ?
 `<span class="${className}"></span>` : itemName ? 
 `<span class="slot ${isActive(itemName)} ${className}" title="${itemName}">${itemName.replace('[', '').replace(']', '')}</span>` :
 `<span class="slot activeEmpty ${className}"></span>`;
-const toInfuser = (itemName, recipe_id) => `<span class="infuser" title="${itemName}--${recipe_id}">${itemName.replace('[', '').replace(']', '')}</span>`;
+const toInfuser = (itemName, i) => `<span class="infuser" title="${itemName}--${i}">${itemName.replace('[', '').replace(']', '')}</span>`;
 const noRecipeText = win => win.item.noResult ? '[No Combinations]' : '[No Data]';
 function changeRecipe(win) {
   win.view = !win.view;
+  const infuserRecipes = {};
+
   if (win.view) {
     win.querySelector(".body").innerHTML = `${
       win.item.to
-      .map((r, recipe_id) => {
+      .map((r, i) => {
         let rec;
 
         if (r.type == "craft")
@@ -216,10 +218,12 @@ function changeRecipe(win) {
             ${toSlot(r.result)}
         </div>`;
 
-        if (r.type == "infuser")
+        if (r.type == "infuser") {
+          infuserRecipes[i] = r;
           rec = `<div class="recipeData">
-            ${toInfuser(r.result, recipe_id)}
-        </div>`;
+            ${toInfuser(r.result, i)}
+          </div>`;
+        }
 
         return `<div class="itemRecipe">${rec}</div>`;
       })
@@ -227,7 +231,7 @@ function changeRecipe(win) {
   } else {
     win.querySelector(".body").innerHTML = `${
       win.item.from
-      .map((r) => {
+      .map((r, i) => {
         let rec;
 
         if (r.type == "location")
@@ -263,10 +267,12 @@ function changeRecipe(win) {
             ${toSlot(r.sources[0])}
         </div>`;
 
-        if (r.type == "infuser")
+        if (r.type == "infuser") {
+          infuserRecipes[i] = r;
           rec = `<div class="recipeData">
-            ${toInfuser(win.item.name)}
-        </div>`;
+            ${toInfuser(win.item.name, i)}
+          </div>`;
+        }
 
         return `<div class="itemRecipe">${rec}</div>`;
       })
@@ -282,7 +288,7 @@ function changeRecipe(win) {
 
   [...win.querySelectorAll(".infuser")].forEach((i) => {
     i.onclick = function (e) {
-      const [name, recipe_id] = this.title.split('--');
+      const [name, i] = this.title.split('--');
       const item = name.getItem() || {
         name: this.title,
         from: [],
@@ -291,7 +297,7 @@ function changeRecipe(win) {
 
       openInfuser(
         item,
-        item.from[+recipe_id],
+        infuserRecipes[+i],
       );
 
       e.preventDefault();

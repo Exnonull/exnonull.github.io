@@ -26,6 +26,9 @@ lootItem([
   ["Steel", "Charged Tank",],
   ["Engine Piston", "Raider Knight",],
 
+  ["Venom", "Arachna",],
+  ["Chlorophyte", "Arachna",],
+
   ["Enriched Pyrolite", "Guardian Of The Underworld"],
   ["Fiery Greatsword", "Guardian Of The Underworld"],
 

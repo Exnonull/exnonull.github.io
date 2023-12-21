@@ -1,5 +1,6 @@
 locationItem([
   [compressorProcess, "Compressor Island"],
+  [entityInfuser, "Entity Infuser Island"],
   [furnaceProcess, "Spawn"],
   [timeProcess, "Everywhere"],
 

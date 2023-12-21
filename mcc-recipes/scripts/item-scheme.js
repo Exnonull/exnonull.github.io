@@ -109,6 +109,16 @@ function linkCompressor(itemName, recipe) {
   });
 }
 
+function linkInfuser(itemName, recipe) {
+  makeItem(entityInfuser);
+  if (recipe.type != 'infuser') return;
+  if (entityInfuser.hasRecipeTo(recipe)) return;
+  entityInfuser.getItem().to.push({ ...recipe, result: itemName });
+  recipe.sources.forEach((otherName) => {
+    makeItem(otherName);
+  });
+}
+
 function linkAccelerator(itemName) {
   makeItem(acceleratorProcess);
   makeItem("Preons");
@@ -148,6 +158,7 @@ function newRecipeFrom(itemName, recipe) {
   if (doNotLink.includes(itemName)) return;
 
   linkAsh(itemName);
+  linkInfuser(itemName, recipe);
   if (recipe.type != 'infuser') linkCompressor(itemName, recipe);
   linkAccelerator(itemName);
 }

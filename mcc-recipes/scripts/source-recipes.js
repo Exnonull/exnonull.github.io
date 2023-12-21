@@ -23,6 +23,7 @@ locationItem([
 lootItem([
   ["Contained Super-Charged Power Cube", "Charged Tank",],
   ["Steel", "Charged Tank",],
+  ["Engine Piston", "Raider Knight",],
 
   ["Enriched Pyrolite", "Guardian Of The Underworld"],
   ["Fiery Greatsword", "Guardian Of The Underworld"],
@@ -61,6 +62,11 @@ lootItem([
   ["Club", "Raider"],
 ])
 
+infuserItem([
+  ["Cube Destroyer Respawner", "Contained Super-Charged Power Cube", "Multi Cube"],
+  ["Raider Brute Respawner", "Contained Super-Charged Power Cube", "Iron Greatsword", "Raider Brute Helmet"],
+]);
+
 craftItem([
   ["Yellow Cube", "Red Cube", "Green Cube"],
   ["Orange Cube", "Yellow Cube", "Red Cube"],
@@ -86,6 +92,9 @@ craftItem([
   ["16 Cube", "8 Cube", "8 Cube"],
   ["32 Cube", "16 Cube", "16 Cube"],
   ["64 Cube", "32 Cube", "32 Cube"],
+  ["128 Cube", "64 Cube", "64 Cube"],
+  ["256 Cube", "128 Cube", "128 Cube"],
+  ["252 Cube", "256 Cube", "Enriched Magenta Cube"],
 
   ["Pack Cube", "Wood Cube", "Dirt Cube"],
   ["Container Cube", "Pack Cube", "Plate Cube"],
@@ -188,8 +197,14 @@ craftItem([
   ["Engine Cylinder", "Spike", "Iron"],
   ["Double Engine Cylinder", "Engine Cylinder", "Engine Cylinder"],
   ["Quad Engine Cylinder", "Double Engine Cylinder", "Double Engine Cylinder"],
+  ["Combustion Engine Piston", "Quad Engine Cylinder", "Engine Piston",],
+  ["Complete Combustion Engine", "Combustion Engine Piston", "Pusher",],
+  ["Enlarged Engine", "Complete Combustion Engine", "Metalic Cube",],
+  [acceleratorProcess, "Enlarged Engine", "Chromium Ring"],
 
   ["Steel Cube", "White Cube", "Steel"],
+  ["Storage Cube", "Backpack Cube", "Steel Cube"],
+  ["Equinox Storage Cube", "Storage Cube", "Discombobulated White Cube"],
   ["Clock", "Wealth Cube", "Steel Cube"],
   ["Vault", "Concrete Door Wall", "Steel Cube"],
 
@@ -197,10 +212,14 @@ craftItem([
   ["Heavy Spiked Iron Shield", "Heavy Iron Shield", "Spiked Cube"],
   ["Heavy Spiked Iron Shield", "Plate Cube", "Spiked Iron Shield"],
 
+  ["Golden Greatsword", "Greatsword", "Wealth Cube"],
+  ["Heavy Greatsword", "Greatsword", "Metalic Cube"],
+
   ["Sword", "Forge Cube", "Iron"],
   ["Golden Sword", "Sword", "Gold Cube"],
   ["Air Sword", "Golden Sword", "Air Cube"],
   ["Light Sword", "Golden Sword", "Light Cube"],
+
   ["Club", "Wood Cube", "Red Cube"],
   ["Spiked Club", "Club", "Spike"],
   ["Reinforced Club", "Club", "Forge Cube"],
@@ -276,6 +295,8 @@ craftItem([
   ["Explosive Cube", "Throwable Cube", "Gunpowder Cube"],
   ["Bomb Cube", "Explosive Cube", "Lava Cube"],
   ["Impact Cube", "Explosive Cube", "Enrichment Cube"],
+  ["Impact Bomb Cube", "Impact Cube", "Bomb Cube"],
+  ["Fusion Bomb Cube", "Impact Bomb Cube", "Discombobulated White Cube"],
 
   ["Quarks", "Preons", "Preons"],
   ["Nucleus", "Quarks", "Quarks"],

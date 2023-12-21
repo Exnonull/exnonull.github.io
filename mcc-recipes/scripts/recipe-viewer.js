@@ -14,6 +14,101 @@ function sortWindows() {
 
 
 
+function openInfuser(item, recipe) {
+  let win = document.createElement("div");
+  win = document.getElementsByClassName("recipes")[0].appendChild(win);
+  win.className = "recipe";
+  win.style = `left: ${window.outerWidth / 2 - 275 / 2}px; top: ${document.querySelector("#input").offsetTop + 100}px;`;
+  win.item = item;
+  win.innerHTML = `
+  <div class="head" draggable="true">
+    <div class="name"><span title="${item.name}">${item.name}</span></div>
+    <div class="close"><span>X</span></div>
+  </div>
+  <div class="body infuserRecipe">
+    <div class="row">
+      ${toSlot(null)}
+      ${toSlot(recipe.sources[4])}
+      ${toSlot(null)}
+    </div>
+    <div class="row">
+      ${toSlot(recipe.sources[3])}
+      ${toSlot(recipe.sources[0], 'circle')}
+      ${toSlot(recipe.sources[2])}
+    </div>
+    <div class="row">
+      ${toSlot(null)}
+      ${toSlot(recipe.sources[1])}
+      ${toSlot(null)}
+    </div>
+    <div class="row">${entityInfuser}</div>
+  </div>`;
+  
+  [...win.querySelectorAll(".slot")].forEach((i) => {
+    i.style.fontSize = getFontSize(i.textContent.length);
+  });
+
+  [...win.querySelectorAll(".active"), ...win.querySelectorAll(".inactive"), ...win.querySelectorAll(".special")].forEach((i) => {
+    i.onclick = function (e) {
+      openWindow(
+        this.title.getItem() || {
+          name: this.title,
+          from: [],
+          to: [],
+        }
+      );
+
+      e.preventDefault();
+      e.cancelBubble = true;
+      return false;
+    };
+  });
+
+  win.date = +new Date();
+  sortWindows();
+
+  win.onclick = (e) => {
+    win.date = +new Date();
+    sortWindows();
+  };
+  win.ontouchstart = (e) => {
+    win.date = +new Date();
+    sortWindows();
+  };
+  win.querySelector(".head").addEventListener(`touchstart`, (e) => {
+    win.date = +new Date();
+    sortWindows();
+
+    win.dx = win.offsetLeft - e.touches[0].pageX;
+    win.dy = win.offsetTop - e.touches[0].pageY;
+    dragging = win;
+
+    e.preventDefault();
+    e.stopPropagation();
+  });
+  win.querySelector(".head").addEventListener(`dragstart`, (e) => {
+    win.date = +new Date();
+    sortWindows();
+
+    win.dx = win.offsetLeft - e.clientX;
+    win.dy = win.offsetTop - e.clientY;
+    dragging = win;
+
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  });
+  win.querySelector(".head").addEventListener(`dragover`, (e) => {
+    e.preventDefault();
+    dragging = null;
+    return false;
+  });
+  win.querySelector(".close").onclick = (e) => win.remove();
+  win.querySelector(".close").ontouchstart = (e) => win.remove();
+}
+
+
+
 function openWindow(item) {
   let win = document.createElement("div");
   win = document.getElementsByClassName("recipes")[0].appendChild(win);
@@ -73,28 +168,7 @@ function openWindow(item) {
   win.querySelector(".change").ontouchstart = (e) => changeRecipe(win);
   win.querySelector(".change").onclick = (e) => changeRecipe(win);
   win.querySelector(".close").onclick = (e) => win.remove();
-  [...win.querySelectorAll(".slot")].forEach((i) => {
-    i.style.fontSize = getFontSize(i.textContent.length);
-  });
   win.querySelector(".close").ontouchstart = (e) => win.remove();
-  [...win.querySelectorAll(".slot")].forEach((i) => {
-    i.style.fontSize = getFontSize(i.textContent.length);
-  });
-  [...win.querySelectorAll(".active")].forEach((i) => {
-    i.onclick = function (e) {
-      openWindow(
-        this.title.getItem() || {
-          name: this.title,
-          from: [],
-          to: [],
-        }
-      );
-
-      e.preventDefault();
-      e.cancelBubble = true;
-      return false;
-    };
-  });
 }
 
 
@@ -109,14 +183,18 @@ const ashWater = itemName => {
   if (itemName != "Water Cube") return '';
   return `<div class="waterLine"></div>`;
 };
-const toSlot = itemName => `<span class="slot ${isActive(itemName)}" title="${itemName}">${itemName.replace('[', '').replace(']', '')}</span>`;
+const toSlot = (itemName, className) => itemName === null ? 
+`<span class="${className}"></span>` : itemName ? 
+`<span class="slot ${isActive(itemName)} ${className}" title="${itemName}">${itemName.replace('[', '').replace(']', '')}</span>` :
+`<span class="slot activeEmpty ${className}"></span>`;
+const toInfuser = (itemName, recipe_id) => `<span class="infuser" title="${itemName}--${recipe_id}">${itemName.replace('[', '').replace(']', '')}</span>`;
 const noRecipeText = win => win.item.noResult ? '[No Combinations]' : '[No Data]';
 function changeRecipe(win) {
   win.view = !win.view;
   if (win.view) {
     win.querySelector(".body").innerHTML = `${
       win.item.to
-      .map((r) => {
+      .map((r, recipe_id) => {
         let rec;
 
         if (r.type == "craft")
@@ -136,6 +214,11 @@ function changeRecipe(win) {
             ${toSlot(r.sources[0])}
             <span class="sign">=</span>
             ${toSlot(r.result)}
+        </div>`;
+
+        if (r.type == "infuser")
+          rec = `<div class="recipeData">
+            ${toInfuser(r.result, recipe_id)}
         </div>`;
 
         return `<div class="itemRecipe">${rec}</div>`;
@@ -180,6 +263,11 @@ function changeRecipe(win) {
             ${toSlot(r.sources[0])}
         </div>`;
 
+        if (r.type == "infuser")
+          rec = `<div class="recipeData">
+            ${toInfuser(win.item.name)}
+        </div>`;
+
         return `<div class="itemRecipe">${rec}</div>`;
       })
       .join("")}`;
@@ -191,6 +279,27 @@ function changeRecipe(win) {
   [...win.querySelectorAll(".slot")].forEach((i) => {
     i.style.fontSize = getFontSize(i.textContent.length);
   });
+
+  [...win.querySelectorAll(".infuser")].forEach((i) => {
+    i.onclick = function (e) {
+      const [name, recipe_id] = this.title.split('--');
+      const item = name.getItem() || {
+        name: this.title,
+        from: [],
+        to: [],
+      };
+
+      openInfuser(
+        item,
+        item.from[+recipe_id],
+      );
+
+      e.preventDefault();
+      e.cancelBubble = true;
+      return false;
+    };
+  });
+  
   [...win.querySelectorAll(".active"), ...win.querySelectorAll(".inactive"), ...win.querySelectorAll(".special")].forEach((i) => {
     i.onclick = function (e) {
       openWindow(

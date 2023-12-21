@@ -7,8 +7,8 @@ const furnaceProcess = '[Furnace]';
 const ashProcess = '[Ash Sifter]';
 const compressorProcess = '[Compressor]';
 const enchantProcess = '[Enchantment Table]';
-const acceleratorProcess = '[Accelerator]'; // preons
-const entityInfusor = '[Entity Infuser]';
+const acceleratorProcess = '[Particle Accelerator]'; // preons
+const entityInfuser = '[Entity Infuser]';
 const doNotLink = [
   unknownItem,
   emptyItem,
@@ -19,7 +19,7 @@ const doNotLink = [
   compressorProcess,
   acceleratorProcess,
   enchantProcess,
-  entityInfusor,
+  entityInfuser,
 ];
 
 const recipeFrom = ({type, sources}) => ({type, sources});
@@ -124,6 +124,13 @@ function newRecipeFrom(itemName, recipe) {
   let item = makeItem(itemName);
   if (!itemName.hasRecipeFrom(recipe)) item.from.push(recipe);
 
+  if (recipe.type == 'infuser')
+      recipe.sources.forEach((otherName) => {
+        let item = makeItem(otherName);
+        if (!otherName.hasRecipeTo(recipe))
+          item.to.push({ ...recipe, result: itemName });
+      });
+
   if (recipe.type == "craft")
     recipe.sources.forEach((otherName) => {
       let item = makeItem(otherName);
@@ -141,7 +148,7 @@ function newRecipeFrom(itemName, recipe) {
   if (doNotLink.includes(itemName)) return;
 
   linkAsh(itemName);
-  linkCompressor(itemName, recipe);
+  if (recipe.type != 'infuser') linkCompressor(itemName, recipe);
   linkAccelerator(itemName);
 }
 
@@ -189,6 +196,15 @@ function craftItem(recipes) {
     newRecipeFrom(name, {
       type: "craft",
       sources: [sourceA, sourceB],
+    })
+  );
+}
+
+function infuserItem(recipes) {
+  recipes.forEach(([name, ...sources]) =>
+    newRecipeFrom(name, {
+      type: "infuser",
+      sources: sources,
     })
   );
 }

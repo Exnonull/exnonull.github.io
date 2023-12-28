@@ -135,6 +135,16 @@ itemCombinations([
     ["128 Cube", "128 Cube",],
     ["256 Cube", "256 Cube", "Enriched Magenta Cube",],
     ["252 Cube",], // tier 252
+    ["512 Cube", "512 Cube"],
+    ["1024 Cube", "1024 Cube"],
+    ["2048 Cube", "2048 Cube"],
+    ["4096 Cube", "4096 Cube"],
+    ["8192 Cube", "8192 Cube"],
+    ["16384 Cube", "16384 Cube"],
+    ["32768 Cube", "32768 Cube"],
+    ["65536 Cube", "65536 Cube"],
+    ["131072 Cube", "131072 Cube"],
+    ["262144 Cube", "262144 Cube"],
 
     ["Heavy Greatsword",],
     ["Orb Of Crimson",],
@@ -168,3 +178,14 @@ itemCombinations([
     ["Portable Disposer",],
     ["Inverted Filter Conveyor Belt",],
 ]);
+
+items.sort((a, b) => {
+    if (doNotLink.includes(a.name)) return 1;
+    if (doNotLink.includes(b.name)) return -1;
+
+    if (!a.from.length) return 1;
+    if (!b.from.length) return -1;
+
+    if ([a.name,b.name].sort(getSort())[0] == a.name) return -1;
+    return 1;
+});

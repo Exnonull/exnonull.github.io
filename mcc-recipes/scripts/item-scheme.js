@@ -1,15 +1,15 @@
 // MAIN
-const unknownItem = '[???]';
-const emptyItem = '[Empty]';
-const anyItem = '[Any]';
-const timeProcess = '[Time]';
-const furnaceProcess = '[Furnace]';
-const ashProcess = '[Ash Sifter]';
-const compressorProcess = '[Compressor]';
-const enchantProcess = '[Enchantment Table]';
-const acceleratorProcess = '[Particle Accelerator]'; // preons
-const entityInfuser = '[Entity Infuser]';
-const doNotLink = [
+globalThis.unknownItem = '[???]';
+globalThis.emptyItem = '[Empty]';
+globalThis.anyItem = '[Any]';
+globalThis.timeProcess = '[Time]';
+globalThis.furnaceProcess = '[Furnace]';
+globalThis.ashProcess = '[Ash Sifter]';
+globalThis.compressorProcess = '[Compressor]';
+globalThis.enchantProcess = '[Enchantment Table]';
+globalThis.acceleratorProcess = '[Particle Accelerator]'; // preons
+globalThis.entityInfuser = '[Entity Infuser]';
+globalThis.doNotLink = [
   unknownItem,
   emptyItem,
   anyItem,
@@ -22,10 +22,10 @@ const doNotLink = [
   entityInfuser,
 ];
 
-const recipeFrom = ({type, sources}) => ({type, sources});
-const recipeTo = (result, {type, sources}) => ({result, type, sources});
+globalThis.recipeFrom = ({type, sources}) => ({type, sources});
+globalThis.recipeTo = (result, {type, sources}) => ({result, type, sources});
 
-const items = [
+globalThis.items = [
   {
     name: emptyItem,
     from: [],

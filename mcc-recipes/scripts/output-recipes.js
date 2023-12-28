@@ -176,7 +176,6 @@ itemCombinations([
     ["Activated Gilded Great Hammer",],
     ["Raider Brute Helmet",],
     ["Portable Disposer",],
-    ["Inverted Filter Conveyor Belt",],
 ]);
 
 items.sort((a, b) => {

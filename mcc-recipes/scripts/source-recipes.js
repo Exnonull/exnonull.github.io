@@ -310,7 +310,7 @@ craftItem([
   ["Air Greatsword", "Golden Greatsword", "Air Cube"],
   ["Goldflame Greatsword", "Golden Greatsword", "Flame Greatsword"],
   ["Chlorophyte Greatsword", "Golden Greatsword", "Chlorophyte Cube"],
-  ["Frostfire Greatsword", "Frostbane Greatsword", "Flame Sword"],
+  ["Frostfire Greatsword", "Frostbane Greatsword", "Flame Greatsword"],
   ["Cryoide Greatsword", "Golden Greatsword", "Cryoide Cube"],
   ["Cursed Greatsword", "Greatsword", "Cursed Sword"],
   ["Light Greatsword", "Golden Greatsword", "Light Cube"],

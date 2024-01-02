@@ -9,6 +9,7 @@ globalThis.compressorProcess = '[Compressor]';
 globalThis.enchantProcess = '[Enchantment Table]';
 globalThis.acceleratorProcess = '[Particle Accelerator]'; // preons
 globalThis.entityInfuser = '[Entity Infuser]';
+globalThis.burnerProcess = '[Burner]';
 globalThis.doNotLink = [
   unknownItem,
   emptyItem,
@@ -20,6 +21,7 @@ globalThis.doNotLink = [
   acceleratorProcess,
   enchantProcess,
   entityInfuser,
+  burnerProcess,
 ];
 
 globalThis.recipeFrom = ({type, sources}) => ({type, sources});
@@ -62,6 +64,26 @@ String.prototype.removeRecipeFrom = function (recipe) {
 };
 String.prototype.removeRecipeTo = function (recipe) {
   return this.getItem().to.splice(this.getItem().to.indexOf(recipe), 1);
+};
+
+String.prototype.isFun = function () {
+  return this.toLowerCase().includes('admin') || this.toLowerCase().includes('moderator') || this.toLowerCase().includes('player');
+};
+
+String.prototype.mark = function () {
+  return '`' + this + '`';
+};
+String.prototype.markBlack = function () {
+  return '`' + this + '`';
+};
+String.prototype.markWhite = function () {
+  return '**' + this + '**';
+};
+String.prototype.underline = function () {
+  return '__' + this + '__';
+};
+String.prototype.markList = function () {
+  return '```js\n' + this + '```';
 };
 
 function makeItem(itemName) {
@@ -143,6 +165,8 @@ function newRecipeFrom(itemName, recipe) {
 
   if (recipe.type == "craft")
     recipe.sources.forEach((otherName) => {
+      if (itemName.isFun() && !otherName.isFun()) return;
+
       let item = makeItem(otherName);
       if (!otherName.hasRecipeTo(recipe))
         item.to.push({ ...recipe, result: itemName });
@@ -154,6 +178,7 @@ function newRecipeFrom(itemName, recipe) {
       item.to.push({ ...recipe, result: itemName });
     });
 
+  if (itemName.isFun()) return;
   if (itemName == emptyItem && recipe.type != 'ash') return;
   if (doNotLink.includes(itemName)) return;
 
@@ -297,4 +322,39 @@ function getSort(caseInsensitive) {
       }
       return 0;
   }
+}
+
+
+function getEditDistance(a, b) {
+  if(a.length == 0) return b.length; 
+  if(b.length == 0) return a.length; 
+
+  var matrix = [];
+
+  // increment along the first column of each row
+  var i;
+  for(i = 0; i <= b.length; i++){
+    matrix[i] = [i];
+  }
+
+  // increment each column in the first row
+  var j;
+  for(j = 0; j <= a.length; j++){
+    matrix[0][j] = j;
+  }
+
+  // Fill in the rest of the matrix
+  for(i = 1; i <= b.length; i++){
+    for(j = 1; j <= a.length; j++){
+      if(b.charAt(i-1) == a.charAt(j-1)){
+        matrix[i][j] = matrix[i-1][j-1];
+      } else {
+        matrix[i][j] = Math.min(matrix[i-1][j-1] + 1, // substitution
+                                Math.min(matrix[i][j-1] + 1, // insertion
+                                         matrix[i-1][j] + 1)); // deletion
+      }
+    }
+  }
+
+  return matrix[b.length][a.length];
 }

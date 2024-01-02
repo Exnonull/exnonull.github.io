@@ -124,7 +124,7 @@ craftItem([
   ["Enriched White Cube", "Enriched Yellow Cube", "Enriched Blue Cube"],
   ["Enriched White Cube", "Enriched Cyan Cube", "Enriched Red Cube"],
   ["Enriched Black Cube", "Enriched White Cube", furnaceProcess],
-  ["Enriched Gray Cube", "Enriched White Cube", "Enriched Black Cube"],
+  // ["Enriched Gray Cube", "Enriched White Cube", "Enriched Black Cube"],
   ["Enriched Violet Cube", "Enriched Magenta Cube", "Enriched Red Cube"],
   ["Enriched Orange Cube", "Enriched Yellow Cube", "Enriched Red Cube"],
   ["Enriched Purple Cube", "Enriched Magenta Cube", "Enriched Blue Cube"],

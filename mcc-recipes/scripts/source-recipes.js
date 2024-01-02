@@ -163,7 +163,7 @@ craftItem([
 
   ["Lava Cube", "Rock Cube", "Molten Sphere"],
   ["Fiery Cube", "Lava Cube", "Fire"],
-  ["Burner", "Fiery Cube", "Stone Door Wall"],
+  [burnerProcess, "Fiery Cube", "Stone Door Wall"],
   ["Activator Cube", "Lava Cube", "White Cube"],
   ["Cooled Lava Cube", "Lava Cube", "Glacier Cube"],
   ["Power Cube", "Cooled Lava Cube", "Plasma Cube"],
@@ -242,6 +242,7 @@ craftItem([
   ["Health Cube", "Regen Cube", "Healer Cube"],
   ["Regen Coil", "Regen Cube", "Forge Cube"],
   ["Restoration Coil", "Regen Cube", "Restore Cube"],
+  ["Bad Coil", "Fire", burnerProcess],
 
   ["Raider Brute Resummoner", "Charged Power Cube", "Raider Brute Respawner"],
   ["Hammerdom Resummoner", "Hammerdom Respawner", "Charged Power Cube"],

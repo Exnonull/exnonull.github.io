@@ -25,6 +25,7 @@ lootItem([
   ["Contained Super-Charged Power Cube", "Charged Tank",],
   ["Steel", "Charged Tank",],
   ["Engine Piston", "Raider Knight",],
+  ["Greatsword", "Raider Knight",],
 
   ["Venom", "Arachna",],
   ["Chlorophyte", "Arachna",],
@@ -32,6 +33,7 @@ lootItem([
   ["Enriched Pyrolite", "Guardian Of The Underworld"],
 
   ["Sword", "Raider"],
+  ["Cursed Sword", "Cursed Raider"],
   ["Flame Sword", "Raider"],
   ["Great Longsword", "Ravenscar"],
   ["Longsword", "Longsworded Rider"],
@@ -41,7 +43,6 @@ lootItem([
   ["Iron Greatsword", "Raider Brute"],
   ["Ice Greatsword", unknownItem],
   ["Fiery Greatsword", "Guardian Of The Underworld"],
-  ["Cursed Sword", unknownItem],
   ["Glacier Greatsword", unknownItem],
   ["Upgraded Lava Greatsword", unknownItem],
   ["Upgraded Iron Greatsword", unknownItem],
@@ -319,6 +320,10 @@ craftItem([
   ["Cursed Greatsword", "Greatsword", "Cursed Sword"],
   ["Light Greatsword", "Golden Greatsword", "Light Cube"],
   ["Dark Greatsword", "Golden Greatsword", "Enriched Black Cube"],
+
+  ["Permafrost Crystal", "BB", furnaceProcess],
+  ["Permafrost Crystal", "Permafrost Dust", "Permafrost Dust"],
+  ["Permafrost Cube", "Permafrost Crystal", furnaceProcess],
 
   ["Deactivated Hyper Cube", "Hyper Fragment", "Green Cube"],
   ["Hyper Cube", "Activator Cube", "Deactivated Hyper Cube"],

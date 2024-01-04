@@ -242,7 +242,7 @@ craftItem([
   ["Restore Cube", "Regen Cube", "Enriched Green Cube"],
   ["Health Cube", "Regen Cube", "Healer Cube"],
   ["Regen Coil", "Regen Cube", "Forge Cube"],
-  ["Restoration Coil", "Regen Cube", "Restore Cube"],
+  ["Restoration Coil", "Regen Coil", "Restore Cube"],
   ["Bad Coil", "Fire", burnerProcess],
 
   ["Raider Brute Resummoner", "Charged Power Cube", "Raider Brute Respawner"],
@@ -506,6 +506,7 @@ craftItem([
   ["Power Fragment", "Power Cube", furnaceProcess],
   ["Concrete Cube", "Wet Concrete Cube", furnaceProcess],
   ["Gunpowder Cube", "Sand Cube", furnaceProcess],
+  ["fried egg", "egg", furnaceProcess],
 
   ["Slightly Oxidised Copper", "Copper", timeProcess],
   ["Heavily Oxidised Copper", "Slightly Oxidised Copper", timeProcess],
@@ -517,6 +518,8 @@ ashItem([
   ["Mud Cube", "Ash Cube", ashProcess, "Water Cube"],
   ["Sand Cube", "Ash Cube", ashProcess, "Water Cube"],
   ["Forge Cube", "Ash Cube", ashProcess, "Water Cube"],
+  ["Strange Diamond", "Ash Cube", ashProcess, "Water Cube"],
+  ["Bridger", "Ash Cube", ashProcess, "Water Cube"],
 
   ["Dirt Cube", "Ash Cube", ashProcess],
   ["Rock Cube", "Ash Cube", ashProcess],
